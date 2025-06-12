@@ -969,9 +969,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // List of resources with 'patient' or 'subject' properties (as of FHIR DSTU2 1.0.0)
 	    var targets = [
 	        "Account",
+          "Appointment",
 	        "AllergyIntolerance",
 	        "BodySite",
-	        "CarePlan",
+	        //"CarePlan",
+          "CareTeam",
 	        "Claim",
 	        "ClinicalImpression",
 	        "Communication",
@@ -1012,6 +1014,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        "ReferralRequest",
 	        "RelatedPerson",
 	        "RiskAssessment",
+          "ServiceRequest",
 	        "Specimen",
 	        "SupplyDelivery",
 	        "SupplyRequest",

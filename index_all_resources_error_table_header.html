@@ -87,14 +87,17 @@ function displayBundle(data) {
         document.getElementById("title").innerHTML = "<h2><i>FHIR Bundle Viewer</i></h2>";
     }
 
-    // clear tabs and pages
-    var tabs = "";
+    // clear tabs and pages  akl
+    var tabs = "<li class=\"active\"><a data-toggle=\"tab\" href=\"#all-resources\">All Resources</a></li>";
     document.getElementById("tabs").innerHTML = tabs;
 
-    var homeDiv = "";
-    document.getElementById("divs").innerHTML = homeDiv;
+    var allResourcesDiv = document.createElement("div");
+    allResourcesDiv.id = "all-resources";
+    allResourcesDiv.className = "tab-pane fade in active";
+    document.getElementById("divs").innerHTML = "";
+    document.getElementById("divs").appendChild(allResourcesDiv);
 
-    // pupulate tabs and pages
+    // populate tabs and pages
     var resourceTypes = new Set(data.entry.map(item => item.resource.resourceType));
     resourceTypes.forEach(resourceType => {
         var entries = data.entry.filter(entry => { return entry.resource.resourceType == resourceType });
@@ -102,44 +105,42 @@ function displayBundle(data) {
         var resourceTypeLabel = resourceType;
         var resourceTypeAndCount = resourceTypeLabel + " <span class=\"badge\">" + resourceCount + "</span>";
         document.getElementById("tabs").innerHTML += "<li><a data-toggle=\"tab\" href=\"#" + resourceType.toLowerCase() + "\">" + resourceTypeAndCount + "</a></li>";
-        var div = "<div id=\"" + resourceType.toLowerCase() + "\" class=\"tab-pane fade\"><a href=\"https://hl7.org/fhir/STU3/" + resourceTypeLabel.toLowerCase() + ".html#resource\"><span class=\"glyphicon glyphicon-fire\" aria-hidden=\"true\"></span>specs</a><table class=\"table table-striped table-hover\"><thead>";
 
-        var columns = new Set();
-        entries.forEach(entry => {
-            for (key in entry.resource) {
-                columns.add(key);
-            }
-        });
-        div += "<tr>";
-        // hide some really technical columns
-        columns.delete("resourceType");
-        columns.delete("id");
-        columns.delete("contained");
-        columns.delete("extension");
-        columns.delete("meta");
-        columns.delete("text");   //akl comment out for testing
-        columns.delete("subject");
-        columns.delete("context");
+        var div = document.createElement("div");
+        div.id = resourceType.toLowerCase();
+        div.className = "tab-pane fade";
+        div.innerHTML = `
+            <!-- <a href="https://hl7.org/fhir/STU3/${resourceTypeLabel.toLowerCase()}.html#resource">
+                <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>specs
+            </a> -->
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        ${Array.from(new Set(entries.flatMap(entry => Object.keys(entry.resource))))
+                            .filter(column => !["resourceType", "id", "contained", "extension", "meta", "subject", "context"].includes(column))
+                            .map(column => `<th>${column}</th>`)
+                            .join("")}
+                    </tr>
+                </thead>
+                <tbody>
+                    ${entries.reverse().map(entry => `
+                        <tr>
+                            ${Array.from(new Set(entries.flatMap(entry => Object.keys(entry.resource))))
+                                .filter(column => !["resourceType", "id", "contained", "extension", "meta", "subject", "context"].includes(column))
+                                .map(column => `<td>${getValue(entry.resource[column], data)}</td>`)
+                                .join("")}
+                        </tr>
+                    `).join("")}
+                </tbody>
+            </table>
+        `;
+        document.getElementById("divs").appendChild(div);
 
-        // create header line
-        columns.forEach(column => {
-            div += "<th>" + column + "</th>";
-        });
-        div += "</tr>";
-
-        // populate columns
-        entries.reverse().forEach(entry => {
-            var row = "<tr>";
-            columns.forEach(column => {
-                var value = getValue(entry.resource[column], data);
-                div += "<td>" + value + "</td>";
-            });    
-            row += "</tr>";
-            div += row;
-        });
-        div += "</tbody></table></div></div>";
-        document.getElementById("divs").innerHTML += div;
-    });    
+        // Append full content to "All Resources" tab
+        var section = document.createElement("div");
+        section.innerHTML = `<h3>${resourceTypeLabel}</h3>` + div.innerHTML;
+        allResourcesDiv.appendChild(section);
+    });
 }
 
 function getValue(element, data) {
