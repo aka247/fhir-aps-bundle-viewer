@@ -972,7 +972,7 @@ return /******/ (function(modules) { // webpackBootstrap
           "Appointment",
 	        "AllergyIntolerance",
 	        "BodySite",
-	        //"CarePlan",
+	        "CarePlan",
           "CareTeam",
 	        "Claim",
 	        "ClinicalImpression",
