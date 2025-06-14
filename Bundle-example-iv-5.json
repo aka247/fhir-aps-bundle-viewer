@@ -20,7 +20,7 @@
       },
       "text" : {
         "status" : "extensions",
-        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Composition_example-iv-5-composition\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Composition example-iv-5-composition</b></p><a name=\"example-iv-5-composition\"> </a><a name=\"hcexample-iv-5-composition\"> </a><a name=\"example-iv-5-composition-en-US\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-diab-composition.html\">Diabetes Composition</a></p></div><p><b>Country of Affiliation</b>: AT</p><p><b>status</b>: Final</p><p><b>type</b>: <span title=\"Codes:{http://loinc.org 60591-5}\">Diabetes Leitdokument</span></p><p><b>date</b>: 2023-04-09 09:01:30+0000</p><p><b>author</b>: <a href=\"Bundle-example-iv-1.html#urn-uuid-75db30ee-7028-486c-929a-c5126837f474\">APS Generator</a></p><p><b>title</b>: Diabetes Leitdokument</p><p><b>custodian</b>: <a href=\"Bundle-example-iv-1.html#urn-uuid-f6266e6a-f63d-4673-b2de-3dff11e619d6\">Muster-Organisation</a></p></div>"
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Composition_example-iv-5-composition\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Composition example-iv-5-composition</b></p><a name=\"example-iv-5-composition\"> </a><a name=\"hcexample-iv-5-composition\"> </a><a name=\"example-iv-5-composition-en-US\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-diab-composition.html\">Diabetes Composition</a></p></div><p><b>Country of Affiliation</b>: AT</p><p><b>status</b>: Final</p><p><b>type</b>: <span title=\"Codes:{http://loinc.org 60591-5}\">Diabetes Leitdokument</span></p><p><b>date</b>: 2023-04-09 09:01:30+0000</p><p><b>author</b>: <a href=\"Bundle-example-iv-1.html#urn-uuid-75db30ee-7028-486c-929a-c5126837f474\">APS Generator</a></p><p><b>title</b>: Diabetes Leitdokument</p><p><b>custodian</b>: <a href=\"Bundle-example-iv-1.html#urn-uuid-f6266e6a-f63d-4673-b2de-3dff11e619d6\">Zentrale Anwendung APS</a></p></div>"
       },
       "extension" : [{
         "url" : "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-ext-composition-countryOfAffiliation",
@@ -46,7 +46,7 @@
       "title" : "Diabetes Leitdokument",
       "custodian" : {
         "reference" : "urn:uuid:f6266e6a-f63d-4673-b2de-3dff11e619d6",
-        "display" : "Muster-Organisation"
+        "display" : "Zentrale Anwendung APS"
       },
       "section" : [{
         "title" : "Medikationsliste",
@@ -395,16 +395,47 @@
     }
   },
   {
-    "fullUrl" : "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+    "fullUrl" : "urn:uuid:75db30ee-7028-486c-929a-c5126837f472",
     "resource" : {
       "resourceType" : "Practitioner",
-      "id" : "example-iv-5-practitioner-2",
+      "id" : "example-iv-5-practitioner-iv",
       "meta" : {
         "profile" : ["https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-practitioner"]
       },
       "text" : {
         "status" : "generated",
-        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Practitioner_example-iv-5-practitioner-2\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Practitioner example-iv-5-practitioner-2</b></p><a name=\"example-iv-5-practitioner-2\"> </a><a name=\"hcexample-iv-5-practitioner-2\"> </a><a name=\"example-iv-5-practitioner-2-en-US\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"https://build.fhir.org/ig/HL7Austria/ELGA-AustrianPatientSummary-R4/StructureDefinition-at-aps-practitioner.html\">AT APS Practitioner</a></p></div><p><b>identifier</b>: <a href=\"http://terminology.hl7.org/6.3.0/NamingSystem-uri.html\" title=\"As defined by RFC 3986 (http://www.ietf.org/rfc/rfc3986.txt)(with many schemes defined in many RFCs). For OIDs and UUIDs, use the URN form (urn:oid:(note: lowercase) and urn:uuid:). See http://www.ietf.org/rfc/rfc3001.txt and http://www.ietf.org/rfc/rfc4122.txt \r\n\r\nThis oid is used as an identifier II.root to indicate the the extension is an absolute URI (technically, an IRI). Typically, this is used for OIDs and GUIDs. Note that when this OID is used with OIDs and GUIDs, the II.extension should start with urn:oid or urn:uuid: \r\n\r\nNote that this OID is created to aid with interconversion between CDA and FHIR - FHIR uses urn:ietf:rfc:3986 as equivalent to this OID. URIs as identifiers appear more commonly in FHIR.\r\n\r\nThis OID may also be used in CD.codeSystem.\">Uniform Resource Identifier (URI)</a>/urn:oid:1.2.40.0.10.99.1.2.3.4</p><p><b>name</b>: Hanna Hausärztin </p></div>"
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Practitioner_example-iv-5-practitioner-iv\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Practitioner example-iv-5-practitioner-iv</b></p><a name=\"example-iv-5-practitioner-iv\"> </a><a name=\"hcexample-iv-5-practitioner-iv\"> </a><a name=\"example-iv-5-practitioner-iv-en-US\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"https://build.fhir.org/ig/HL7Austria/ELGA-AustrianPatientSummary-R4/StructureDefinition-at-aps-practitioner.html\">AT APS Practitioner</a></p></div><p><b>identifier</b>: <a href=\"http://terminology.hl7.org/6.3.0/NamingSystem-uri.html\" title=\"As defined by RFC 3986 (http://www.ietf.org/rfc/rfc3986.txt)(with many schemes defined in many RFCs). For OIDs and UUIDs, use the URN form (urn:oid:(note: lowercase) and urn:uuid:). See http://www.ietf.org/rfc/rfc3001.txt and http://www.ietf.org/rfc/rfc4122.txt \r\n\r\nThis oid is used as an identifier II.root to indicate the the extension is an absolute URI (technically, an IRI). Typically, this is used for OIDs and GUIDs. Note that when this OID is used with OIDs and GUIDs, the II.extension should start with urn:oid or urn:uuid: \r\n\r\nNote that this OID is created to aid with interconversion between CDA and FHIR - FHIR uses urn:ietf:rfc:3986 as equivalent to this OID. URIs as identifiers appear more commonly in FHIR.\r\n\r\nThis OID may also be used in CD.codeSystem.\">Uniform Resource Identifier (URI)</a>/urn:oid:1.2.40.0.10.99.1.2.3.4</p><p><b>name</b>: Melanie IV Diätologin </p><p><b>address</b>: Praterstern 5 Wien 1020 </p></div>"
+      },
+      "identifier" : [{
+        "system" : "urn:ietf:rfc:3986",
+        "value" : "urn:oid:1.2.40.0.10.99.1.2.3.4",
+        "assigner" : {
+          "display" : "Bundesministerium für Gesundheit"
+        }
+      }],
+      "name" : [{
+        "family" : "IV Diätologin",
+        "given" : ["Melanie"],
+        "prefix" : ["Dr."]
+      }],
+      "address" : [{
+        "line" : ["Praterstern 5"],
+        "city" : "Wien",
+        "postalCode" : "1020"
+      }]
+    }
+  },
+  {
+    "fullUrl" : "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+    "resource" : {
+      "resourceType" : "Practitioner",
+      "id" : "example-iv-5-practitioner-1",
+      "meta" : {
+        "profile" : ["https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-practitioner"]
+      },
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Practitioner_example-iv-5-practitioner-1\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Practitioner example-iv-5-practitioner-1</b></p><a name=\"example-iv-5-practitioner-1\"> </a><a name=\"hcexample-iv-5-practitioner-1\"> </a><a name=\"example-iv-5-practitioner-1-en-US\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"https://build.fhir.org/ig/HL7Austria/ELGA-AustrianPatientSummary-R4/StructureDefinition-at-aps-practitioner.html\">AT APS Practitioner</a></p></div><p><b>identifier</b>: <a href=\"http://terminology.hl7.org/6.3.0/NamingSystem-uri.html\" title=\"As defined by RFC 3986 (http://www.ietf.org/rfc/rfc3986.txt)(with many schemes defined in many RFCs). For OIDs and UUIDs, use the URN form (urn:oid:(note: lowercase) and urn:uuid:). See http://www.ietf.org/rfc/rfc3001.txt and http://www.ietf.org/rfc/rfc4122.txt \r\n\r\nThis oid is used as an identifier II.root to indicate the the extension is an absolute URI (technically, an IRI). Typically, this is used for OIDs and GUIDs. Note that when this OID is used with OIDs and GUIDs, the II.extension should start with urn:oid or urn:uuid: \r\n\r\nNote that this OID is created to aid with interconversion between CDA and FHIR - FHIR uses urn:ietf:rfc:3986 as equivalent to this OID. URIs as identifiers appear more commonly in FHIR.\r\n\r\nThis OID may also be used in CD.codeSystem.\">Uniform Resource Identifier (URI)</a>/urn:oid:1.2.40.0.10.99.1.2.3.4</p><p><b>name</b>: Hanna Hausärztin </p><p><b>address</b>: Treustraße 38 Wien 1200 </p></div>"
       },
       "identifier" : [{
         "system" : "urn:ietf:rfc:3986",
@@ -417,6 +448,11 @@
         "family" : "Hausärztin",
         "given" : ["Hanna"],
         "prefix" : ["Dr."]
+      }],
+      "address" : [{
+        "line" : ["Treustraße 38"],
+        "city" : "Wien",
+        "postalCode" : "1200"
       }]
     }
   },
@@ -470,9 +506,14 @@
       },
       "text" : {
         "status" : "generated",
-        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Organization_example-iv-5-organization\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Organization example-iv-5-organization</b></p><a name=\"example-iv-5-organization\"> </a><a name=\"hcexample-iv-5-organization\"> </a><a name=\"example-iv-5-organization-en-US\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"https://build.fhir.org/ig/HL7Austria/ELGA-AustrianPatientSummary-R4/StructureDefinition-at-aps-organization.html\">AT APS Organization</a></p></div><p><b>name</b>: Muster-Organization</p></div>"
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Organization_example-iv-5-organization\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Organization example-iv-5-organization</b></p><a name=\"example-iv-5-organization\"> </a><a name=\"hcexample-iv-5-organization\"> </a><a name=\"example-iv-5-organization-en-US\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"https://build.fhir.org/ig/HL7Austria/ELGA-AustrianPatientSummary-R4/StructureDefinition-at-aps-organization.html\">AT APS Organization</a></p></div><p><b>name</b>: Zentrale Anwendung APS, BMSGPK</p><p><b>address</b>: Stubenring 1 Wien 1010 </p></div>"
       },
-      "name" : "Muster-Organization"
+      "name" : "Zentrale Anwendung APS, BMSGPK",
+      "address" : [{
+        "line" : ["Stubenring 1"],
+        "city" : "Wien",
+        "postalCode" : "1010"
+      }]
     }
   },
   {
@@ -1517,7 +1558,7 @@
       },
       "text" : {
         "status" : "generated",
-        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Condition_example-iv-5-illness-history-1\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Condition example-iv-5-illness-history-1</b></p><a name=\"example-iv-5-illness-history-1\"> </a><a name=\"hcexample-iv-5-illness-history-1\"> </a><a name=\"example-iv-5-illness-history-1-en-US\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"https://build.fhir.org/ig/HL7Austria/ELGA-AustrianPatientSummary-R4/StructureDefinition-at-aps-condition.html\">AT APS Condition</a></p></div><p><b>clinicalStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-clinical resolved}\">Resolved</span></p><p><b>verificationStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-ver-status confirmed}\">Confirmed</span></p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-category problem-list-item}\">Problem List Item</span></p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 161419000}\">Zustand nach Masern</span></p><p><b>subject</b>: <a href=\"Bundle-example-iv-1.html#urn-uuid-0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8\">Anton Testpatient</a></p></div>"
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Condition_example-iv-5-illness-history-1\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Condition example-iv-5-illness-history-1</b></p><a name=\"example-iv-5-illness-history-1\"> </a><a name=\"hcexample-iv-5-illness-history-1\"> </a><a name=\"example-iv-5-illness-history-1-en-US\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"https://build.fhir.org/ig/HL7Austria/ELGA-AustrianPatientSummary-R4/StructureDefinition-at-aps-condition.html\">AT APS Condition</a></p></div><p><b>clinicalStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-clinical resolved}\">Resolved</span></p><p><b>verificationStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-ver-status confirmed}\">Confirmed</span></p><p><b>category</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-category problem-list-item}\">Problem List Item</span></p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 161419000}\">Zustand nach Masern</span></p><p><b>subject</b>: <a href=\"Bundle-example-iv-1.html#urn-uuid-0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8\">Anton Testpatient</a></p><p><b>recordedDate</b>: 1960-01-01</p><p><b>asserter</b>: <a href=\"Bundle-example-iv-1.html#urn-uuid-75db30ee-7028-486c-929a-c5126837f473\">Dr. Hanna Hausärztin</a></p></div>"
       },
       "clinicalStatus" : {
         "coding" : [{
@@ -1550,6 +1591,11 @@
       "subject" : {
         "reference" : "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
         "display" : "Anton Testpatient"
+      },
+      "recordedDate" : "1960-01-01",
+      "asserter" : {
+        "reference" : "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+        "display" : "Dr. Hanna Hausärztin"
       }
     }
   },
@@ -1681,7 +1727,7 @@
       "id" : "example-iv-5-careplan-diabetes-nutrition-training",
       "text" : {
         "status" : "generated",
-        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Appointment_example-iv-5-careplan-diabetes-nutrition-training\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Appointment example-iv-5-careplan-diabetes-nutrition-training</b></p><a name=\"example-iv-5-careplan-diabetes-nutrition-training\"> </a><a name=\"hcexample-iv-5-careplan-diabetes-nutrition-training\"> </a><a name=\"example-iv-5-careplan-diabetes-nutrition-training-en-US\"> </a><p><b>status</b>: Booked</p><p><b>serviceCategory</b>: <span title=\"Codes:{http://snomed.info/sct 428274007}\">Ernährungsschulung bei Diabetes mellitus Typ II</span></p><p><b>serviceType</b>: <span title=\"Codes:\">Diabetes Schulung</span></p><p><b>appointmentType</b>: <span title=\"Codes:\">ROUTINE</span></p><p><b>reasonReference</b>: <a href=\"Bundle-example-iv-3.html#urn-uuid-a3a9be59-ec61-4cab-92a9-9cbab6aec437\">Diabetes Mellitus Typ 2</a></p><p><b>description</b>: Diese Schulung beinhaltet detaillierte Ernährungsinformationten für Diabetes mellitus Typ II Patienten</p><p><b>start</b>: 2023-03-20 08:00:00+0000</p><p><b>end</b>: 2023-03-20 10:00:00+0000</p><p><b>created</b>: 2023-03-17</p><blockquote><p><b>participant</b></p><p><b>actor</b>: <a href=\"Bundle-example-iv-1.html#urn-uuid-0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8\">Anton Testpatient</a></p><p><b>status</b>: Accepted</p></blockquote><blockquote><p><b>participant</b></p><p><b>actor</b>: <a href=\"Bundle-example-iv-1.html#urn-uuid-75db30ee-7028-486c-929a-c5126837f473\">Dr. Hanna Hausärztin</a></p><p><b>status</b>: Accepted</p></blockquote></div>"
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Appointment_example-iv-5-careplan-diabetes-nutrition-training\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Appointment example-iv-5-careplan-diabetes-nutrition-training</b></p><a name=\"example-iv-5-careplan-diabetes-nutrition-training\"> </a><a name=\"hcexample-iv-5-careplan-diabetes-nutrition-training\"> </a><a name=\"example-iv-5-careplan-diabetes-nutrition-training-en-US\"> </a><p><b>status</b>: Booked</p><p><b>serviceCategory</b>: <span title=\"Codes:{http://snomed.info/sct 428274007}\">Ernährungsschulung bei Diabetes mellitus Typ II</span></p><p><b>serviceType</b>: <span title=\"Codes:\">Diabetes Schulung</span></p><p><b>appointmentType</b>: <span title=\"Codes:\">ROUTINE</span></p><p><b>reasonReference</b>: <a href=\"Bundle-example-iv-3.html#urn-uuid-a3a9be59-ec61-4cab-92a9-9cbab6aec437\">Diabetes Mellitus Typ 2</a></p><p><b>description</b>: Diese Schulung beinhaltet detaillierte Ernährungsinformationten für Diabetes mellitus Typ II Patienten</p><p><b>start</b>: 2023-03-20 08:00:00+0000</p><p><b>end</b>: 2023-03-20 10:00:00+0000</p><p><b>created</b>: 2023-03-17</p><blockquote><p><b>participant</b></p><p><b>actor</b>: <a href=\"Bundle-example-iv-1.html#urn-uuid-0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8\">Anton Testpatient</a></p><p><b>status</b>: Accepted</p></blockquote><blockquote><p><b>participant</b></p><p><b>actor</b>: <a href=\"Bundle-example-iv-5.html#urn-uuid-75db30ee-7028-486c-929a-c5126837f472\">Dr. IV Diätologin</a></p><p><b>status</b>: Accepted</p></blockquote></div>"
       },
       "status" : "booked",
       "serviceCategory" : [{
@@ -1720,8 +1766,8 @@
       },
       {
         "actor" : {
-          "reference" : "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
-          "display" : "Dr. Hanna Hausärztin"
+          "reference" : "urn:uuid:75db30ee-7028-486c-929a-c5126837f472",
+          "display" : "Dr. IV Diätologin"
         },
         "status" : "accepted"
       }]
