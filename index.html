@@ -67,12 +67,12 @@
             "timingPeriod": "Datum",
             "bodySite": "Lokation",
             "vaccineCode": "Vakzin",
-            "route": "Stelle",
+            "route": "Anwendung",
             "medicationCodeableConcept": "Medikament",
             "effectivePeriod": "Datum",
             "dosage": "Dosierung",
             "asserter": "Festgestellt",
-            "protocolApplied": "Impfziel",
+            "protocolApplied": "Impfung gegen",
             "interpretation": "Interpretation",
             "specimen": "Spezimen",
             "intent": "Zweck",
@@ -302,13 +302,13 @@
             tabs.forEach((tab, index) => {
                 if (tab.resources.length === 0) return;
                 document.getElementById("tabs").innerHTML += `
-          <li${index === 0 ? ' class="active"' : ''}>
+            <li${index === 0 ? ' class="active"' : ''}>
             <a data-toggle="tab" href="#${tab.id}">${tab.title} <span class="badge">${tab.resources.length}</span></a>
-          </li>`;
+            </li>`;
                 document.getElementById("divs").innerHTML += `
-          <div id="${tab.id}" class="tab-pane fade${index === 0 ? ' in active' : ''}">
+            <div id="${tab.id}" class="tab-pane fade${index === 0 ? ' in active' : ''}">
             ${renderGroupedTables(tab.resources)}
-          </div>`;
+            </div>`;
             });
         }
 
