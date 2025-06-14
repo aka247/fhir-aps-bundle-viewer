@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>FHIR Bundle Viewer</title>
+    <title>Austrian Patient Summary</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <style>
         body {
@@ -39,12 +39,12 @@
 
     <div id="upload-btn-container">
         <label id="upload-label" class="btn btn-primary btn-sm">
-            JSON laden
+            Datei öffnen
             <input type="file" id="file-input" accept=".json">
         </label>
     </div>
-
-    <h1 id="name"></h1>
+    <h1>Austrian Patient Summary</h1>
+    <h1 id="name">Patient/in: </h1>
     <p id="gender-birthdate"></p>
 
     <ul class="nav nav-tabs" id="tabs"></ul>
@@ -243,7 +243,7 @@
                 {
                     id: "eingriffe",
                     title: "Eingriffe und Therapien",
-                    resources: entries.filter(r => r.resourceType === "Procedure" && hasClinicalStatus(r, "active"))
+                    resources: entries.filter(r => r.resourceType === "Procedure")
                 },
                 {
                     id: "implantate",

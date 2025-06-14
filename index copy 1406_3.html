@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>FHIR Bundle Viewer</title>
+    <title>Austrian Patient Summary</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <style>
         body {
@@ -17,12 +17,34 @@
         h2 {
             margin-top: 30px;
         }
+
+        #upload-btn-container {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+        }
+
+        #file-input {
+            display: none;
+        }
+
+        #upload-label {
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
 
-    <h1 id="name"></h1>
+    <div id="upload-btn-container">
+        <label id="upload-label" class="btn btn-primary btn-sm">
+            Datei öffnen
+            <input type="file" id="file-input" accept=".json">
+        </label>
+    </div>
+    <h1>Austrian Patient Summary</h1>
+    <h1 id="name">Patient/in: </h1>
     <p id="gender-birthdate"></p>
 
     <ul class="nav nav-tabs" id="tabs"></ul>
@@ -67,12 +89,12 @@
             "timingPeriod": "Datum",
             "bodySite": "Lokation",
             "vaccineCode": "Vakzin",
-            "route": "Stelle",
+            "route": "Anwendung",
             "medicationCodeableConcept": "Medikament",
             "effectivePeriod": "Datum",
             "dosage": "Dosierung",
             "asserter": "Festgestellt",
-            "protocolApplied": "Impfziel",
+            "protocolApplied": "Impfung gegen",
             "interpretation": "Interpretation",
             "specimen": "Spezimen",
             "intent": "Zweck",
@@ -221,7 +243,7 @@
                 {
                     id: "eingriffe",
                     title: "Eingriffe und Therapien",
-                    resources: entries.filter(r => r.resourceType === "Procedure" && hasClinicalStatus(r, "active"))
+                    resources: entries.filter(r => r.resourceType === "Procedure")
                 },
                 {
                     id: "implantate",
@@ -302,13 +324,13 @@
             tabs.forEach((tab, index) => {
                 if (tab.resources.length === 0) return;
                 document.getElementById("tabs").innerHTML += `
-          <li${index === 0 ? ' class="active"' : ''}>
+            <li${index === 0 ? ' class="active"' : ''}>
             <a data-toggle="tab" href="#${tab.id}">${tab.title} <span class="badge">${tab.resources.length}</span></a>
-          </li>`;
+            </li>`;
                 document.getElementById("divs").innerHTML += `
-          <div id="${tab.id}" class="tab-pane fade${index === 0 ? ' in active' : ''}">
+            <div id="${tab.id}" class="tab-pane fade${index === 0 ? ' in active' : ''}">
             ${renderGroupedTables(tab.resources)}
-          </div>`;
+            </div>`;
             });
         }
 
@@ -317,6 +339,23 @@
             .then(res => res.json())
             .then(data => displayBundle(data))
             .catch(err => console.error("Fehler beim Laden des Bundles:", err));
+
+        // Button load file
+        document.getElementById("file-input").addEventListener("change", function (event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                try {
+                    const json = JSON.parse(e.target.result);
+                    displayBundle(json);
+                } catch (error) {
+                    alert("Ungültige JSON-Datei.");
+                }
+            };
+            reader.readAsText(file);
+        });
     </script>
 
 </body>
