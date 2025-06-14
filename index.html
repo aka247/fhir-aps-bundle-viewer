@@ -17,10 +17,32 @@
         h2 {
             margin-top: 30px;
         }
+
+        #upload-btn-container {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+        }
+
+        #file-input {
+            display: none;
+        }
+
+        #upload-label {
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
+
+    <div id="upload-btn-container">
+        <label id="upload-label" class="btn btn-primary btn-sm">
+            JSON laden
+            <input type="file" id="file-input" accept=".json">
+        </label>
+    </div>
 
     <h1 id="name"></h1>
     <p id="gender-birthdate"></p>
@@ -317,6 +339,23 @@
             .then(res => res.json())
             .then(data => displayBundle(data))
             .catch(err => console.error("Fehler beim Laden des Bundles:", err));
+
+        // Button load file
+        document.getElementById("file-input").addEventListener("change", function (event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                try {
+                    const json = JSON.parse(e.target.result);
+                    displayBundle(json);
+                } catch (error) {
+                    alert("Ungültige JSON-Datei.");
+                }
+            };
+            reader.readAsText(file);
+        });
     </script>
 
 </body>
