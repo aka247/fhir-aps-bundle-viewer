@@ -44,7 +44,7 @@
         </label>
     </div>
     <h1>Austrian Patient Summary</h1>
-    <h2 id="name"></h2>
+    <h1 id="name"></h1>
     <p id="gender-birthdate"></p>
 
     <ul class="nav nav-tabs" id="tabs"></ul>
@@ -155,7 +155,7 @@
 
             let html = "";
             for (const [type, items] of Object.entries(grouped)) {
-                html += `<h3>${typeToGerman(type)}</h3>`;
+                html += `<h2>${typeToGerman(type)}</h2>`;
                 html += renderTable(items);
             }
             return html;
@@ -211,29 +211,7 @@
         }
 
         function displayBundle(data) {
-
-            // Tabs & Inhalte zurücksetzen
-            document.getElementById("tabs").innerHTML = "";
-            document.getElementById("divs").innerHTML = "";
-            document.getElementById("name").textContent = "";
-            document.getElementById("gender-birthdate").textContent = "";
-
-
-            const entries = data.entry.map(e => e.resource); // make sure entries is defined
-
-            const patient = entries.find(r => r.resourceType === "Patient");
-
-            const diabetesConditionCodes = [
-                "44054006", // Diabetes Mellitus Typ 2
-                "105401000119101" // Diabetes due to pancreatic injury
-            ];
-
-            const hasDiabetes = entries.some(r =>
-                r.resourceType === "Condition" &&
-                r.code?.coding?.some(c => diabetesConditionCodes.includes(c.code))
-            );
-
-
+            const patient = data.entry.find(e => e.resource.resourceType === "Patient")?.resource;
             if (patient) {
                 const title = patient.name?.[0]?.prefix?.[0] || "";
                 const given = patient.name?.[0]?.given?.join(" ") || "";
@@ -244,13 +222,8 @@
                 document.getElementById("gender-birthdate").textContent = `${gender} – Geburtsdatum: ${birthDate}`;
             }
 
+            const entries = data.entry.map(e => e.resource);
             const tabs = [
-                {
-                    id: "administrativ",
-                    title: "Administrative Informationen",
-                    resources: entries.filter(r =>
-                        ["Patient", "Practitioner", "Organization", "CareTeam"].includes(r.resourceType))
-                },
                 {
                     id: "medikation",
                     title: "Medikationsliste",
@@ -263,7 +236,7 @@
                     resources: entries.filter(r => r.resourceType === "AllergyIntolerance")
                 },
                 {
-                    id: "gesundheitsprobleme",
+                    id: "gesundheit",
                     title: "Gesundheitsprobleme und Risiken",
                     resources: entries.filter(r => r.resourceType === "Condition" && hasClinicalStatus(r, "active"))
                 },
@@ -336,64 +309,38 @@
                     id: "warnungen",
                     title: "Warnungen",
                     resources: entries.filter(r => r.resourceType === "Flag")
+                },
+                {
+                    id: "administrativ",
+                    title: "Administrative Informationen",
+                    resources: entries.filter(r =>
+                        ["Patient", "Practitioner", "Organization", "CareTeam"].includes(r.resourceType))
                 }
-
             ];
 
-            if (hasDiabetes) {
-                // Alle Ressourcen nach Tabstruktur gruppieren
-                let diabetesSummaryHTML = "";
-                tabs.forEach(tab => {
-                    if (tab.resources && tab.resources.length) {
-                        diabetesSummaryHTML += `<h3>${tab.title}</h3>`;
-                        diabetesSummaryHTML += renderGroupedTables(tab.resources);
-                    }
-                });
-
-                tabs.push({
-                    id: "leitdokument",
-                    title: "Diabetes Leitdokument",
-                    resources: entries.filter(r =>
-                        r.resourceType === "Observation" && hasCode(r, "laboratory")
-                        // or other logic for diabetes-relevant resources
-                    ),
-                    customHTML: "<p>Das Diabetes-Leitdokument wird hier dargestellt.</p>"
-                });
-            }
-
+            document.getElementById("tabs").innerHTML = "";
+            document.getElementById("divs").innerHTML = "";
 
             tabs.forEach((tab, index) => {
-                if (!tab.resources?.length && !tab.customHTML) return;  // Only skip if nothing at all
-
+                if (tab.resources.length === 0) return;
                 document.getElementById("tabs").innerHTML += `
-                    <li${index === 0 ? ' class="active"' : ''}>
-                        <a data-toggle="tab" href="#${tab.id}">${tab.title} <span class="badge">${tab.resources?.length || ""}</span></a>
-                    </li>`;
-
+            <li${index === 0 ? ' class="active"' : ''}>
+            <a data-toggle="tab" href="#${tab.id}">${tab.title} <span class="badge">${tab.resources.length}</span></a>
+            </li>`;
                 document.getElementById("divs").innerHTML += `
-                    <div id="${tab.id}" class="tab-pane fade${index === 0 ? ' in active' : ''}">
-                        ${tab.customHTML || ""}
-                        ${renderGroupedTables(tab.resources || [])}
-                    </div>`;
+            <div id="${tab.id}" class="tab-pane fade${index === 0 ? ' in active' : ''}">
+            ${renderGroupedTables(tab.resources)}
+            </div>`;
             });
         }
 
-        // Beispiel-Bundle per default laden
-       // fetch("Bundle-example-iv-5.json").then(res => res.json()).then(data => displayBundle(data)).catch(err => console.error("Fehler beim Laden des Bundles:", err));
-
-       // load bundle
-       /* window.onload = function() {
-            const stored = sessionStorage.getItem(STORAGE_KEY);
-            if (stored) {
-                displayBundle(JSON.parse(stored));
-            }
-        };
-        
-        // Beim Upload testen 
-        function handleFileUpload(data) {
-            sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-            displayBundle(data);
-        } */
+        // Beispiel-Bundle laden
+        /*
+        fetch("Bundle-example-iv-5.json")
+            .then(res => res.json())
+            .then(data => displayBundle(data))
+            .catch(err => console.error("Fehler beim Laden des Bundles:", err));
+            */
 
         // Button load file
         document.getElementById("file-input").addEventListener("change", function (event) {
