@@ -1,189 +1,235 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
   <title>FHIR Bundle Viewer</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="fhir-client.js"></script>
+
   <style>
-    body { padding: 20px; }
-    .tab-content { margin-top: 20px; }
+      body {
+        font-family: Roboto, Arial, Helvetica, sans-serif;
+      }
   </style>
 </head>
 <body>
 
-  <h1 id="name"></h1>
-  <p id="birthdate"></p>
+<div class="container-fluid">
+  <div id="title"><h2><i>FHIR Bundle Viewer</i></h2></div>
 
-  <ul class="nav nav-tabs" id="tabs"></ul>
-  <div class="tab-content" id="divs"></div>
+  <div id="controls">
+    <p>
+        <input type="file" class="form-control-file" id="inputFile" onchange="newInputFile()"/>
+    </p>
+  </div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <!-- Tabs-->
+  <ul class="nav nav-tabs" id="tabs">
+  </ul>
 
-  <script>
-    function getValue(val) {
-      if (!val) return "";
-      if (Array.isArray(val)) return val.map(getValue).join(", ");
-      if (typeof val === "object") {
-        if (val.text) return val.text;
-        if (val.display) return val.display;
-        if (val.coding) return val.coding.map(c => c.display || c.code).join(", ");
-        if (val.code) return val.code;
-        if (val.value) return val.value;
-        if (val.reference) return val.reference;
-        return Object.values(val).map(getValue).join(", ");
-      }
-      return val;
-    }
+  <!-- Tab Panels-->
+  <div class="tab-content" id="divs">
+  </div>
 
-    function renderTable(resources) {
-      if (!resources.length) return "<p><i>Keine Einträge vorhanden.</i></p>";
-      const columns = Array.from(new Set(resources.flatMap(r => Object.keys(r))))
-        .filter(c => !["resourceType", "id", "meta", "extension", "text"].includes(c));
-      let html = "<table class='table table-striped table-hover'><thead><tr>"
-               + columns.map(c => `<th>${c}</th>`).join("") + "</tr></thead><tbody>";
-      resources.forEach(r => {
-        html += "<tr>" + columns.map(c => `<td>${getValue(r[c])}</td>`).join("") + "</tr>";
-      });
-      html += "</tbody></table>";
-      return html;
-    }
+<script>
+var df = new Intl.DateTimeFormat('nl-NL', { year: 'numeric', month: 'short', day: 'numeric' });
+var dtf = new Intl.DateTimeFormat('nl-NL', { year: 'numeric', month: 'short', day: 'numeric', hour: "2-digit", minute: "2-digit" });
 
-    function hasCode(resource, code) {
-      return (resource.category || []).some(cat =>
-        (cat.coding || []).some(c => c.code === code)
-      );
-    }
+var _patientname;
+var _birthdate;
+var _data;
+$(document).ready(function(){
+    FHIR.oauth2.ready(function(smart){
+        document.getElementById("controls").style.display = "none";
+        // assume Bearer token and copy to JQuery headers
+        $.ajaxSetup({
+            headers : { 'Authorization' : 'Bearer ' + smart.server.auth.token }
+        });        
+        $.getJSON(smart.server.serviceUrl + "/Patient/" + smart.patient.id + "/$everything?_count=200", function(data, status){
+            _data = data;
+            displayBundle(data);
+        });
+    });
+});
 
-    function hasClinicalStatus(resource, statusCode) {
-      return (resource.clinicalStatus?.coding || []).some(c => c.code === statusCode);
-    }
+function newInputFile() {
+    var reader = new FileReader();
+    reader.onload = function(){
+        var data = JSON.parse(reader.result);
+        displayBundle(data);
+        _data = data;
+    };
+    reader.readAsText(document.getElementById("inputFile").files[0]);
+}
 
-    function displayBundle(data) {
-      const patient = data.entry.find(e => e.resource.resourceType === "Patient")?.resource;
-      if (patient) {
-        document.getElementById("name").textContent = (patient.name?.[0]?.text || "Patient");
-        document.getElementById("birthdate").textContent = "Geburtsdatum: " + (patient.birthDate || "");
-      }
-
-      const entries = data.entry.map(e => e.resource);
-      const tabs = [
-        {
-          id: "medikation",
-          title: "Medikationsliste",
-          resources: entries.filter(r =>
-            ["Medication", "MedicationRequest", "MedicationStatement", "MedicationDispense", "MedicationAdministration"].includes(r.resourceType))
-        },
-        {
-          id: "allergien",
-          title: "Allergien und Intoleranzen",
-          resources: entries.filter(r => r.resourceType === "AllergyIntolerance")
-        },
-        {
-          id: "gesundheit",
-          title: "Gesundheitsprobleme und Risiken",
-          resources: entries.filter(r => r.resourceType === "Condition" && hasClinicalStatus(r, "active"))
-        },
-        {
-          id: "eingriffe",
-          title: "Eingriffe und Therapien",
-          resources: entries.filter(r => r.resourceType === "Procedure" && hasClinicalStatus(r, "active"))
-        },
-        {
-          id: "implantate",
-          title: "Implantate, medizinische Geräte und Heilbehelfe",
-          resources: entries.filter(r => ["Device", "DeviceUseStatement"].includes(r.resourceType))
-        },
-        {
-          id: "impfungen",
-          title: "Impfungen",
-          resources: entries.filter(r => r.resourceType === "Immunization")
-        },
-        {
-          id: "befunde",
-          title: "Diagnostische Resultate",
-          resources: entries.filter(r =>
-            r.resourceType === "DiagnosticReport" ||
-            (r.resourceType === "Observation" && hasCode(r, "laboratory")) ||
-            (r.resourceType === "Observation" && hasCode(r, "radiology")))
-        },
-        {
-          id: "vitalparameter",
-          title: "Vitalparameter",
-          resources: entries.filter(r =>
-            r.resourceType === "Observation" && hasCode(r, "vital-signs"))
-        },
-        {
-          id: "vergangen",
-          title: "Vergangene Gesundheitsprobleme und Risiken",
-          resources: entries.filter(r => r.resourceType === "Condition" && hasClinicalStatus(r, "resolved"))
-        },
-        {
-          id: "beeintraechtigungen",
-          title: "Beeinträchtigungen",
-          resources: entries.filter(r => r.resourceType === "Condition" && hasCode(r, "248536006")) // SNOMED für Impairment
-        },
-        {
-          id: "careplan",
-          title: "Behandlungsplan",
-          resources: entries.filter(r => r.resourceType === "CarePlan")
-        },
-        {
-          id: "lebensstil",
-          title: "Lebensstil / Soziale Umstände und Verhalten",
-          resources: entries.filter(r =>
-            r.resourceType === "Observation" &&
-            (hasCode(r, "social-history") || hasCode(r, "behavioral-health")))
-        },
-        {
-          id: "schwangerschaft",
-          title: "Schwangerschaftshistorie",
-          resources: entries.filter(r =>
-            r.resourceType === "Observation" &&
-            ["82810-3", "57075-6", "48667-8"].some(code => // LOINC pregnancy codes
-              (r.code?.coding || []).some(c => c.code === code))
-          )
-        },
-        {
-          id: "willenserklaerungen",
-          title: "Willenserklärungen und andere juristische Dokumente",
-          resources: entries.filter(r => r.resourceType === "Consent")
-        },
-        {
-          id: "warnungen",
-          title: "Warnungen",
-          resources: entries.filter(r => r.resourceType === "Flag")
-        },
-        {
-          id: "administrativ",
-          title: "Administrative Informationen",
-          resources: entries.filter(r =>
-            ["Patient", "Practitioner", "Organization", "CareTeam"].includes(r.resourceType))
+function displayBundle(data) {
+    // create title based on Patient
+    var entries = data.entry.filter(entry => { return entry.resource.resourceType == "Patient" });
+    if (entries.length > 0 && entries[0].resource && entries[0].resource.name) {
+        var patient = entries[0].resource;
+        _birthdate = new Date(patient.birthDate);
+        var age;
+        if (patient.deceasedDateTime) {
+            age = new Date(patient.deceasedDateTime).getFullYear() - _birthdate.getFullYear() + " died";
         }
-      ];
-
-      document.getElementById("tabs").innerHTML = "";
-      document.getElementById("divs").innerHTML = "";
-
-      tabs.forEach((tab, index) => {
-        if (tab.resources.length === 0) return;
-        document.getElementById("tabs").innerHTML += `
-          <li${index === 0 ? ' class="active"' : ''}>
-            <a data-toggle="tab" href="#${tab.id}">${tab.title} <span class="badge">${tab.resources.length}</span></a>
-          </li>`;
-        document.getElementById("divs").innerHTML += `
-          <div id="${tab.id}" class="tab-pane fade${index === 0 ? ' in active' : ''}">
-            ${renderTable(tab.resources)}
-          </div>`;
-      });
+        else {
+            age = new Date().getFullYear() - _birthdate.getFullYear();
+        }
+        _patientname = patient.name[0].given + " " + patient.name[0].family + " " + patient.gender + " " + age;
+        document.getElementById("title").innerHTML = "<h2><i>FHIR Bundle Viewer:</i> " + _patientname + " (" + df.format(_birthdate) + ")</h2>";
+    }
+    else {
+        document.getElementById("title").innerHTML = "<h2><i>FHIR Bundle Viewer</i></h2>";
     }
 
-    // Beispiel-Daten laden 
-    fetch("Bundle-example-iv-5.json")
-      .then(res => res.json())
-      .then(data => displayBundle(data))
-      .catch(err => console.error("Fehler beim Laden des Bundles:", err));
-  </script>
+    // clear tabs and pages
+    var tabs = "";
+    document.getElementById("tabs").innerHTML = tabs;
+
+    var homeDiv = "";
+    document.getElementById("divs").innerHTML = homeDiv;
+
+    // pupulate tabs and pages
+    var resourceTypes = new Set(data.entry.map(item => item.resource.resourceType));
+    resourceTypes.forEach(resourceType => {
+        var entries = data.entry.filter(entry => { return entry.resource.resourceType == resourceType });
+        var resourceCount = entries.length;
+        var resourceTypeLabel = resourceType;
+        var resourceTypeAndCount = resourceTypeLabel + " <span class=\"badge\">" + resourceCount + "</span>";
+        document.getElementById("tabs").innerHTML += "<li><a data-toggle=\"tab\" href=\"#" + resourceType.toLowerCase() + "\">" + resourceTypeAndCount + "</a></li>";
+        var div = "<div id=\"" + resourceType.toLowerCase() + "\" class=\"tab-pane fade\"><a href=\"https://hl7.org/fhir/STU3/" + resourceTypeLabel.toLowerCase() + ".html#resource\"><span class=\"glyphicon glyphicon-fire\" aria-hidden=\"true\"></span>specs</a><table class=\"table table-striped table-hover\"><thead>";
+
+        var columns = new Set();
+        entries.forEach(entry => {
+            for (key in entry.resource) {
+                columns.add(key);
+            }
+        });
+        div += "<tr>";
+        // hide some really technical columns
+        columns.delete("resourceType");
+        columns.delete("id");
+        columns.delete("contained");
+        columns.delete("extension");
+        columns.delete("meta");
+        columns.delete("text");
+        columns.delete("subject");
+        columns.delete("context");
+
+        // create header line
+        columns.forEach(column => {
+            div += "<th>" + column + "</th>";
+        });
+        div += "</tr>";
+
+        // populate columns
+        entries.reverse().forEach(entry => {
+            var row = "<tr>";
+            columns.forEach(column => {
+                var value = getValue(entry.resource[column], data);
+                div += "<td>" + value + "</td>";
+            });    
+            row += "</tr>";
+            div += row;
+        });
+        div += "</tbody></table></div></div>";
+        document.getElementById("divs").innerHTML += div;
+    });    
+}
+
+function getValue(element, data) {
+    var value = element;
+    if (element == undefined) value = "";
+    else if (element["reference"]) {
+        var before = element.reference.substring (0, element.reference.lastIndexOf('/'));
+        var resourceType = before.substring (before.lastIndexOf('/') + 1).toLowerCase();
+        var icon = "glyphicon-share-alt";
+        if (data) {
+            // see if the reference is in the Bundle
+            var refedEntries = data.entry.filter(entry => { return entry.fullUrl == element.reference });
+            if (refedEntries.length > 0) {
+                icon = "glyphicon-paperclip";
+            }
+        }
+        value = '<a data-toggle="tab" href="#' + resourceType + '"><span class="glyphicon ' + icon + '" aria-hidden="true"></span>' + value.display + "</a>";
+    }
+    else if (element["display"]) value = value.display;
+    else if (element["text"]) value = value.text;
+    else if (element["value"]) value = value.value;
+    else if (Array.isArray(element)) {
+        value = "";
+        element.forEach(entry => {
+            value += getValue(entry, data) + "<br/>";
+        });
+    }
+    else if (typeof element == "object") {
+        if (element["coding"]) { value = getValue(element.coding); }
+        else if (element["details"]) { value = getValue(element.details); }
+        else if (element["code"]) { value = getValue(element.code); }
+        else if (element["reference"]) { value = '@' + element.reference; }
+        else if (element["itemCodeableConcept"]) { value = getValue(element.itemCodeableConcept); }
+        else if (element["itemReference"]) { value = getValue(element.itemReference); }
+        else {
+            value = "";
+            for (key in element) {
+                var _value = getValue(element[key]);
+                value += _value + " &bull; ";
+            }
+        }
+    }
+    // value = JSON.stringify(element);
+    return value;
+}
+
+// Get location reference display from associated (context) Encounter
+function getContextEncounterLocation(data, entry) {
+    var location = "";
+    if (entry.resource.context) {
+        var encounter = data.entry.find(_entry => _entry.resource.resourceType == "Encounter" && _entry.fullUrl.endsWith(entry.resource.context.reference));
+        if (encounter.resource.location && encounter.resource.location[0].location.display) {
+            var _location = encounter.resource.location[0].location.display;
+            location = formatLocation(_location);
+        }
+    }
+    return location;
+}
+
+function formatLocation(_location) {
+    var location = "";
+    switch (_location) {
+        case "UMCG":
+            location = "<span class=\"label label-primary\">" + _location + "</span>";
+            break;
+        case "MARTINI":
+            location = "<span class=\"label label-success\">" + _location + "</span>";
+            break;
+        case "HA":
+            location = "<span class=\"label label-info\">" + _location + "</span>";
+            break;
+        default:
+            location = "<span class=\"label\">" + _location + "</span>";
+            break;
+    }
+    return location;
+}
+
+function getParameterByName(name, url) {
+    if (!url) {
+      url = window.location.href;
+    }
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+</script>
 
 </body>
 </html>
