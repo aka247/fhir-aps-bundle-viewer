@@ -1,11 +1,13 @@
 
-# FHIR Bundle Viewer
+# APS Bundle Viewer
 
+Examples: https://fhir.hl7.at/r4-ELGA-AustrianPatientSummary-main/index.html
+
+Based on FHIR Bundle Viewer (Michael van der Zel)
 A simple FHIR Bundle as a Table Viewer based on bootstrap.
 This viewer is initially created to visualize a Synthea generated patient.
 And $everything exports.
 
-Michael van der Zel
 
 ---------
 Serve via node.js "http-server" for getJSON to work.
