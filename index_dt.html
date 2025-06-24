@@ -43,13 +43,6 @@
             <input type="file" id="file-input" accept=".json">
         </label>
     </div>
-    <div class="form-inline my-2">
-        <label for="lang-toggle" class="me-2">Spaltenüberschriften:</label>
-        <select id="lang-toggle" class="form-select form-select-sm w-auto">
-            <option value="de">Deutsch</option>
-            <option value="orig">Original</option>
-        </select>
-    </div>
     <h1>AUSTRIAN PATIENT SUMMARY</h1>
     <h2 id="name"></h2>
     <p id="gender-birthdate"></p>
@@ -61,9 +54,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <script>
-
-        let showGerman = true;
-
         const genderMap = {
             "male": "Männlich",
             "female": "Weiblich",
@@ -72,61 +62,59 @@
         };
 
         const columnTranslations = {
-            code: "Code",
-            deviceName: "Gerätename",
-            status: "Status",
-            effectiveDateTime: "Erhebungsdatum",
-            issued: "Ausstellungsdatum",
-            performer: "Durchführend",
-            category: "Kategorie",
-            note: "Anmerkung",
-            dosageInstruction: "Dosierungsanweisung",
-            authoredOn: "Verordnet am",
-            recordedDate: "Dokumentiert am",
-            occurrenceDateTime: "Datum",
-            onsetDateTime: "Beginn",
-            abatementDateTime: "Ende",
-            clinicalStatus: "Status",
-            verificationStatus: "Status",
-            manufacturer: "Hersteller",
-            lotNumber: "Chargennummer",
-            expirationDate: "Verfallsdatum",
-            type: "Typ",
-            version: "Version",
-            device: "Gerät",
-            timingPeriod: "Datum",
-            bodySite: "Lokation",
-            vaccineCode: "Vakzin",
-            route: "Anwendung",
-            medicationCodeableConcept: "Medikament",
-            effectivePeriod: "Datum",
-            dosage: "Dosierung",
-            asserter: "Festgestellt",
-            protocolApplied: "Impfung gegen",
-            interpretation: "Interpretation",
-            specimen: "Spezimen",
-            intent: "Zweck",
-            title: "Titel",
-            description: "Beschreibung",
-            created: "Erstellt am",
-            author: "Verantwortlich",
-            addresses: "Zweck",
-            goal: "Ziel",
-            activity: "Task/Aktivität",
-            identifier: "ID",
-            name: "Name",
-            gender: "Geschlecht",
-            birthDate: "Geburtsdatum",
-            address: "Adresse",
-            maritalStatus: "Familienstand",
-            participant: "Teilnehmer",
-            telecom: "Kontaktdaten",
-            valueQuantity: "Wert (Menge)",
-            specimen: "Spezimen",
-            interpretation: "Interpretation",
-            valueCodeableConcept: "Wert (Code)",
-            valueRatio: "Wert (Verhältnis)",
-            component: "Komponente",
+            "code": "Code",
+            "deviceName": "Gerätename",
+            "status": "Status",
+           // "valueQuantity": "Einheit",
+           // "valueCodeableConcept": "Wert",
+            "effectiveDateTime": "Erhebungsdatum",
+            "issued": "Ausstellungsdatum",
+            "performer": "Durchführend",
+            "category": "Kategorie",
+            "note": "Anmerkung",
+            "dosageInstruction": "Dosierungsanweisung",
+            "authoredOn": "Verordnet am",
+            "recordedDate": "Dokumentiert am",
+            "occurrenceDateTime": "Datum",
+            "onsetDateTime": "Beginn",
+            "abatementDateTime": "Ende",
+            "clinicalStatus": "Status",
+            "verificationStatus": "Status",
+            "manufacturer": "Hersteller",
+            "lotNumber": "Chargennummer",
+            "expirationDate": "Verfallsdatum",
+            "type": "Typ",
+            "version": "Version",
+            "device": "Gerät",
+            "timingPeriod": "Datum",
+            "bodySite": "Lokation",
+            "vaccineCode": "Vakzin",
+            "route": "Anwendung",
+            "medicationCodeableConcept": "Medikament",
+            "effectivePeriod": "Datum",
+            "dosage": "Dosierung",
+            "asserter": "Festgestellt",
+            "protocolApplied": "Impfung gegen",
+            "interpretation": "Interpretation",
+            "specimen": "Spezimen",
+            "intent": "Zweck",
+            "title": "Titel",
+            "description": "Beschreibung",
+            "created": "Erstellt am",
+            "author": "Verantwortlich",
+            "addresses": "Zweck",
+            "goal": "Ziel",
+            "activity": "Task/Aktivät",
+            "identifier": "ID",
+            "name": "Name",
+            "gender": "Geschlecht",
+            "birthDate": "Geburtsdatum",
+            "address": "Adresse",
+            "maritalStatus": "Familienstand",
+            "participant": "Teilnehmer",
+            "telecom": "Kontaktdaten",
+            "address": "Adresse"
+
         };
 
         function formatDate(d) {
@@ -143,30 +131,16 @@
         function getValue(val) {
             if (!val) return "";
             if (Array.isArray(val)) return val.map(getValue).join(", ");
-
             if (typeof val === "object") {
-                // handle Quantity
-                if (val.hasOwnProperty("value") && val.hasOwnProperty("unit")) {
-                    return `${val.value} ${val.unit}`;
-                }
-
-                // handle Ratio
-                if (val.hasOwnProperty("numerator") && val.hasOwnProperty("denominator")) {
-                    const numerator = getValue(val.numerator);
-                    const denominator = getValue(val.denominator);
-                    return `${numerator} / ${denominator}`;
-                }
-
-                // general FHIR patterns
                 if (val.text) return val.text;
                 if (val.display) return val.display;
                 if (val.coding) return val.coding.map(c => c.display || c.code).join(", ");
                 if (val.code) return val.code;
+                if (val.value) return val.value;
                 if (val.reference) return val.reference;
-
+                if (val.unit) return `${val.value} ${val.unit}`;
                 return Object.values(val).map(getValue).join(", ");
             }
-
             if (typeof val === "string" && /^\d{4}-\d{2}-\d{2}/.test(val)) return formatDate(val);
             return val;
         }
@@ -192,7 +166,7 @@
             const columns = Array.from(new Set(resources.flatMap(r => Object.keys(r))))
                 .filter(c => !["resourceType", "id", "meta", "extension", "text", "subject", "patient"].includes(c));
             let html = "<table class='table table-striped table-hover'><thead><tr>"
-                + columns.map(c => `<th>${showGerman && columnTranslations[c] ? columnTranslations[c] : c}</th>`).join("") + "</tr></thead><tbody>";
+                + columns.map(c => `<th>${columnTranslations[c] || c}</th>`).join("") + "</tr></thead><tbody>";
             resources.forEach(r => {
                 html += "<tr>" + columns.map(c => `<td>${getValue(r[c])}</td>`).join("") + "</tr>";
             });
@@ -243,7 +217,6 @@
         }
 
         function displayBundle(data) {
-            window.currentBundle = data;
             const patient = data.entry.find(e => e.resource.resourceType === "Patient")?.resource;
             if (patient) {
                 const title = patient.name?.[0]?.prefix?.[0] || "";
@@ -400,14 +373,6 @@
                 }
             };
             reader.readAsText(file);
-        });
-
-            // Language toggle
-        document.getElementById("lang-toggle").addEventListener("change", function () {
-            showGerman = this.value === "de";
-            if (window.currentBundle) {
-                displayBundle(window.currentBundle);
-            }
         });
     </script>
 
