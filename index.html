@@ -43,8 +43,8 @@
             <input type="file" id="file-input" accept=".json">
         </label>
     </div>
-    <h1>Austrian Patient Summary</h1>
-    <h1 id="name"></h1>
+    <h1>AUSTRIAN PATIENT SUMMARY</h1>
+    <h2 id="name"></h2>
     <p id="gender-birthdate"></p>
 
     <ul class="nav nav-tabs" id="tabs"></ul>
@@ -65,7 +65,7 @@
             "code": "Code",
             "deviceName": "Gerätename",
             "status": "Status",
-            "valueQuantity": "Einheit",
+           // "valueQuantity": "Einheit",
             "valueCodeableConcept": "Wert",
             "effectiveDateTime": "Erhebungsdatum",
             "issued": "Ausstellungsdatum",
@@ -155,7 +155,7 @@
 
             let html = "";
             for (const [type, items] of Object.entries(grouped)) {
-                html += `<h2>${typeToGerman(type)}</h2>`;
+                html += `<h3>${typeToGerman(type)}</h3>`;
                 html += renderTable(items);
             }
             return html;
@@ -210,6 +210,12 @@
             return map[type] || type;
         }
 
+        function hasCategoryCode(resource, code) {
+            return resource?.category?.some(cat =>
+                cat.coding?.some(coding => coding.code === code)
+            );
+        }
+
         function displayBundle(data) {
             const patient = data.entry.find(e => e.resource.resourceType === "Patient")?.resource;
             if (patient) {
@@ -223,6 +229,13 @@
             }
 
             const entries = data.entry.map(e => e.resource);
+
+            // to check profile
+            //const isProfile = (resource, canonicalUrl) =>
+              //  resource.meta &&
+              //  Array.isArray(resource.meta.profile) &&
+              //  resource.meta.profile.includes(canonicalUrl);
+
             const tabs = [
                 {
                     id: "medikation",
@@ -288,8 +301,11 @@
                     id: "lebensstil",
                     title: "Lebensstil / Soziale Umstände und Verhalten",
                     resources: entries.filter(r =>
-                        r.resourceType === "Observation" &&
-                        (hasCode(r, "social-history") || hasCode(r, "behavioral-health")))
+                        (r.resourceType === "Observation" &&
+                        hasCategoryCode(r, "social-history")) ||
+                        (r.resourceType === "AtApsObservationAlcoholUse") ||
+                        (r.resourceType === "AtApsObservationTobaccoUse")
+                    )
                 },
                 {
                     id: "schwangerschaft",
