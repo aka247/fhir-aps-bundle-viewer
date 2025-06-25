@@ -44,8 +44,9 @@
         </label>
     </div>
     <div class="form-inline my-2">
-        <label for="lang-toggle" class="me-2">Spaltenüberschriften:</label>
-        <select id="lang-toggle" class="form-select form-select-sm w-auto">
+        <label for="lang-toggle"></label>
+        <select id="lang-toggle" class="form-control input-sm" style="width: auto; display: inline-block;">
+
             <option value="de">Deutsch</option>
             <option value="orig">Original</option>
         </select>
@@ -171,19 +172,29 @@
             return val;
         }
 
+        //Tabgruppen
+
         function renderGroupedTables(resources) {
+
             if (!resources.length) return "<p><i>Keine Einträge vorhanden.</i></p>";
+
             const grouped = {};
             resources.forEach(r => {
                 grouped[r.resourceType] = grouped[r.resourceType] || [];
                 grouped[r.resourceType].push(r);
             });
 
+            const resourceTypes = Object.keys(grouped);
+            const multipleTypes = resourceTypes.length > 1;
+
             let html = "";
             for (const [type, items] of Object.entries(grouped)) {
-                html += `<h3>${typeToGerman(type)}</h3>`;
+                if (multipleTypes) {
+                    html += `<h3>${typeToGerman(type)}</h3>`;
+                }
                 html += renderTable(items);
             }
+
             return html;
         }
 
@@ -218,13 +229,13 @@
                 "MedicationDispense": "Medikationsabgabe",
                 "MedicationAdministration": "Medikationsverabreichung",
                 "AllergyIntolerance": "Allergien und Intoleranzen",
-                "Condition": "Gesundheitsprobleme",
+                //"Condition": "Gesundheitsprobleme",
                 "Procedure": "Eingriffe und Therapien",
                 "Device": "Gerät",
                 "DeviceUseStatement": "Gerätenutzung",
                 "Immunization": "Impfungen",
-                "DiagnosticReport": "Diagnostische Resultate",
-                "Observation": "Diagnostische Resultate",
+                "DiagnosticReport": "Befunde",
+                //"Observation": "Diagnostische Resultate",
                 "CarePlan": "Behandlungsplan",
                 "Consent": "Einwilligung",
                 "Flag": "Warnung",
@@ -358,23 +369,44 @@
                     title: "Administrative Informationen",
                     resources: entries.filter(r =>
                         ["Patient", "Practitioner", "Organization", "CareTeam"].includes(r.resourceType))
-                }
+                },
             ];
+
+            // Gesamtübersicht vorbereiten
+            const gesamtHTMLSections = tabs
+                .filter(tab => tab.resources.length > 0)
+                .map(tab =>
+                    `<h3>${tab.title}</h3>\n${renderGroupedTables(tab.resources)}`
+                ).join("\n");
+
+            if (gesamtHTMLSections) {
+                tabs.unshift({
+                    id: "gesamtuebersicht",
+                    title: "Gesamtübersicht",
+                    resources: [],
+                    content: gesamtHTMLSections
+                });
+            }
 
             document.getElementById("tabs").innerHTML = "";
             document.getElementById("divs").innerHTML = "";
 
             tabs.forEach((tab, index) => {
-                if (tab.resources.length === 0) return;
+                // Skip if no resources and no predefined content (e.g., Gesamtübersicht with HTML)
+                if (tab.resources.length === 0 && !tab.content) return;
+
                 document.getElementById("tabs").innerHTML += `
-            <li${index === 0 ? ' class="active"' : ''}>
-            <a data-toggle="tab" href="#${tab.id}">${tab.title} <span class="badge">${tab.resources.length}</span></a>
-            </li>`;
+                    <li${index === 0 ? ' class="active"' : ''}>
+                        <a data-toggle="tab" href="#${tab.id}">${tab.title}${tab.resources?.length ? ` <span class="badge">${tab.resources.length}</span>` : ''}</a>
+                    </li>`;
+
                 document.getElementById("divs").innerHTML += `
-            <div id="${tab.id}" class="tab-pane fade${index === 0 ? ' in active' : ''}">
-            ${renderGroupedTables(tab.resources)}
-            </div>`;
+                    <div id="${tab.id}" class="tab-pane fade${index === 0 ? ' in active' : ''}">
+                        ${tab.content || renderGroupedTables(tab.resources)}
+                    </div>`;
             });
+
+            
         }
 
         // Beispiel-Bundle laden
