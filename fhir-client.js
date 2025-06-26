@@ -1018,6 +1018,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        "Specimen",
 	        "SupplyDelivery",
 	        "SupplyRequest",
+          "Task",
 	        "VisionPrescription"
 	    ];
 
