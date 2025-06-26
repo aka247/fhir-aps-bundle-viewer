@@ -141,34 +141,40 @@
             }).trim();
         }
 
-        function getValue(val) {
+
+
+        function getValue(val, key = "") {
+
             if (!val) return "";
-            if (Array.isArray(val)) return val.map(getValue).join(", ");
+
+            if (Array.isArray(val)) {
+                // Handle Observation.component[] separately
+                if (key === "component") {
+                    return val.map(c => {
+                        const code = c.code?.coding?.[0]?.display || c.code?.text || c.code?.coding?.[0]?.code || "Komponente";
+                        const value = getValue(c.valueQuantity) || getValue(c.valueCodeableConcept) || getValue(c.valueString) || "";
+                        return `${code}: ${value}`;
+                    }).join("<br>");
+                }
+                return val.map(v => getValue(v)).join(", ");
+            }
 
             if (typeof val === "object") {
-                // handle Quantity
                 if (val.hasOwnProperty("value") && val.hasOwnProperty("unit")) {
                     return `${val.value} ${val.unit}`;
                 }
 
-                // handle Ratio
-                if (val.hasOwnProperty("numerator") && val.hasOwnProperty("denominator")) {
-                    const numerator = getValue(val.numerator);
-                    const denominator = getValue(val.denominator);
-                    return `${numerator} / ${denominator}`;
-                }
-
-                // general FHIR patterns
                 if (val.text) return val.text;
                 if (val.display) return val.display;
                 if (val.coding) return val.coding.map(c => c.display || c.code).join(", ");
                 if (val.code) return val.code;
                 if (val.reference) return val.reference;
 
-                return Object.values(val).map(getValue).join(", ");
+                return Object.values(val).map(v => getValue(v)).join(", ");
             }
 
             if (typeof val === "string" && /^\d{4}-\d{2}-\d{2}/.test(val)) return formatDate(val);
+
             return val;
         }
 
@@ -267,12 +273,6 @@
             }
 
             const entries = data.entry.map(e => e.resource);
-
-            // to check profile
-            //const isProfile = (resource, canonicalUrl) =>
-              //  resource.meta &&
-              //  Array.isArray(resource.meta.profile) &&
-              //  resource.meta.profile.includes(canonicalUrl);
 
             const tabs = [
                 {
@@ -391,8 +391,8 @@
             document.getElementById("tabs").innerHTML = "";
             document.getElementById("divs").innerHTML = "";
 
+            const usedTypes = new Set();
             tabs.forEach((tab, index) => {
-                // Skip if no resources and no predefined content (e.g., Gesamtübersicht with HTML)
                 if (tab.resources.length === 0 && !tab.content) return;
 
                 document.getElementById("tabs").innerHTML += `
@@ -403,6 +403,28 @@
                 document.getElementById("divs").innerHTML += `
                     <div id="${tab.id}" class="tab-pane fade${index === 0 ? ' in active' : ''}">
                         ${tab.content || renderGroupedTables(tab.resources)}
+                    </div>`;
+
+                tab.resources?.forEach(r => usedTypes.add(r.resourceType));
+            });
+
+            // Add any missing resource types as new tabs
+            const allTypesInBundle = [...new Set(entries.map(e => e.resourceType))];
+            const unusedTypes = allTypesInBundle.filter(t => !usedTypes.has(t));
+
+            unusedTypes.forEach(type => {
+                const resources = entries.filter(r => r.resourceType === type);
+                const tabId = "tab_" + type.toLowerCase();
+                const title = typeToGerman(type); // Use mapping if possible
+
+                document.getElementById("tabs").innerHTML += `
+                    <li>
+                        <a data-toggle="tab" href="#${tabId}">${title} <span class="badge">${resources.length}</span></a>
+                    </li>`;
+
+                document.getElementById("divs").innerHTML += `
+                    <div id="${tabId}" class="tab-pane fade">
+                        ${renderGroupedTables(resources)}
                     </div>`;
             });
 
