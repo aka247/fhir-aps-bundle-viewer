@@ -43,17 +43,17 @@
             <input type="file" id="file-input" accept=".json">
         </label>
         <div class="form-inline my-2">
-        <br>
-        <label for="lang-toggle"></label>
-        <select id="lang-toggle" class="form-control input-sm" style="width: auto; display: inline-block;">
+            <br>
+            <label for="lang-toggle"></label>
+            <select id="lang-toggle" class="form-control input-sm" style="width: auto; display: inline-block;">
 
-            <option value="de">Deutsch</option>
-            <option value="orig">Original</option>
-        </select>
-    </div>
+                <option value="de">Deutsch</option>
+                <option value="orig">Original</option>
+            </select>
+        </div>
     </div>
 
-    
+
 
     <h1>AUSTRIAN PATIENT SUMMARY</h1>
     <h2 id="name"></h2>
@@ -282,7 +282,9 @@
                 document.getElementById("gender-birthdate").textContent = `${gender} – Geburtsdatum: ${birthDate}`;
             }
 
-            const entries = data.entry.map(e => e.resource);
+            const entries = data.entry
+                                .map(e => e.resource)
+                                .filter(r => r.resourceType !== "Composition");
 
             const tabs = [
                 {
@@ -323,7 +325,7 @@
                         r.resourceType === "DiagnosticReport" ||
                         (r.resourceType === "Observation" && hasCode(r, "laboratory")) ||
                         (r.resourceType === "Observation" && hasCode(r, "radiology")) ||
-                        r.resourceType === "Specimen" )
+                        r.resourceType === "Specimen")
                 },
                 {
                     id: "vitalparameter",
@@ -353,7 +355,7 @@
                     title: "Lebensstil / Soziale Umstände und Verhalten",
                     resources: entries.filter(r =>
                         (r.resourceType === "Observation" &&
-                        hasCategoryCode(r, "social-history")) ||
+                            hasCategoryCode(r, "social-history")) ||
                         (r.resourceType === "AtApsObservationAlcoholUse") ||
                         (r.resourceType === "AtApsObservationTobaccoUse")
                     )
@@ -441,8 +443,6 @@
                         ${renderGroupedTables(resources)}
                     </div>`;
             });
-
-            
         }
 
         // Beispiel-Bundle laden
@@ -470,7 +470,7 @@
             reader.readAsText(file);
         });
 
-            // Language toggle
+        // Language toggle
         document.getElementById("lang-toggle").addEventListener("change", function () {
             showGerman = this.value === "de";
             if (window.currentBundle) {
