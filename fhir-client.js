@@ -1018,7 +1018,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        "Specimen",
 	        "SupplyDelivery",
 	        "SupplyRequest",
-	        "VisionPrescription"
+	        "VisionPrescription",
+          "Task",
 	    ];
 
 	    exports.$WithPatient = mw.$$Simple(function(args){
