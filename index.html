@@ -322,7 +322,8 @@
                     resources: entries.filter(r =>
                         r.resourceType === "DiagnosticReport" ||
                         (r.resourceType === "Observation" && hasCode(r, "laboratory")) ||
-                        (r.resourceType === "Observation" && hasCode(r, "radiology")))
+                        (r.resourceType === "Observation" && hasCode(r, "radiology")) ||
+                        r.resourceType === "Specimen" )
                 },
                 {
                     id: "vitalparameter",
@@ -344,7 +345,7 @@
                     id: "careplan",
                     title: "Behandlungsplan",
                     //resources: entries.filter(r => r.resourceType === "CarePlan")
-                    resources: entries.filter(r => ["CarePlan", "Appointment", "DeviceRequest", "Task", "ServiceRequest"].includes(r.resourceType))
+                    resources: entries.filter(r => ["CarePlan", "Appointment", "DeviceRequest", "Task", "ServiceRequest", "Goal"].includes(r.resourceType))
 
                 },
                 {
