@@ -343,7 +343,9 @@
                 {
                     id: "careplan",
                     title: "Behandlungsplan",
-                    resources: entries.filter(r => r.resourceType === "CarePlan")
+                    //resources: entries.filter(r => r.resourceType === "CarePlan")
+                    resources: entries.filter(r => ["CarePlan", "Appointment", "DeviceRequest", "Task", "ServiceRequest"].includes(r.resourceType))
+
                 },
                 {
                     id: "lebensstil",
@@ -355,15 +357,15 @@
                         (r.resourceType === "AtApsObservationTobaccoUse")
                     )
                 },
-                {
-                    id: "schwangerschaft",
-                    title: "Schwangerschaftshistorie",
-                    resources: entries.filter(r =>
-                        r.resourceType === "Observation" &&
-                        ["82810-3", "57075-6", "48667-8"].some(code =>
-                            (r.code?.coding || []).some(c => c.code === code))
-                    )
-                },
+                //{
+                //    id: "schwangerschaft",
+                //    title: "Schwangerschaftshistorie",
+                //    resources: entries.filter(r =>
+                //        r.resourceType === "Observation" &&
+                //        ["82810-3", "57075-6", "48667-8"].some(code =>
+                //            (r.code?.coding || []).some(c => c.code === code))
+                //    )
+                //},
                 {
                     id: "willenserklaerungen",
                     title: "Willenserklärungen und andere juristische Dokumente",
@@ -380,6 +382,7 @@
                     resources: entries.filter(r =>
                         ["Patient", "Practitioner", "Organization", "CareTeam"].includes(r.resourceType))
                 },
+
             ];
 
             // Gesamtübersicht vorbereiten
