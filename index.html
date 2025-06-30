@@ -19,7 +19,7 @@
         }
 
         #upload-btn-container {
-            position: fixed;
+            position: absolute;  /* fixed */
             top: 10px;
             right: 10px;
             z-index: 1000;
@@ -38,19 +38,18 @@
 <body>
 
     <div id="upload-btn-container">
+        <span id="filename-display" style="margin-left: 10px; font-weight: bold;"></span>
         <label id="upload-label" class="btn btn-primary btn-sm">
             Datei öffnen
             <input type="file" id="file-input" accept=".json">
         </label>
-        <div class="form-inline my-2">
-            <br>
-            <label for="lang-toggle"></label>
-            <select id="lang-toggle" class="form-control input-sm" style="width: auto; display: inline-block;">
+        <label for="lang-toggle"></label>
+        <select id="lang-toggle" class="form-control input-sm" style="width: auto; display: inline-block;">
+            <option value="de">Deutsch</option>
+            <option value="orig">Original</option>
+        </select>
+    
 
-                <option value="de">Deutsch</option>
-                <option value="orig">Original</option>
-            </select>
-        </div>
     </div>
 
 
@@ -475,6 +474,21 @@
             showGerman = this.value === "de";
             if (window.currentBundle) {
                 displayBundle(window.currentBundle);
+            }
+        });
+
+        // Display filename
+        document.getElementById("file-input").addEventListener("change", function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                document.getElementById("filename-display").textContent = file.name;
+
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    const json = JSON.parse(event.target.result);
+                    displayBundle(json);
+                };
+                reader.readAsText(file);
             }
         });
     </script>
