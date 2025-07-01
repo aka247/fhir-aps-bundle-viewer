@@ -19,7 +19,8 @@
         }
 
         #upload-btn-container {
-            position: absolute;  /* fixed */
+            position: absolute;
+            /* fixed */
             top: 10px;
             right: 10px;
             z-index: 1000;
@@ -48,11 +49,7 @@
             <option value="de">Deutsch</option>
             <option value="orig">Original</option>
         </select>
-    
-
     </div>
-
-
 
     <h1>AUSTRIAN PATIENT SUMMARY</h1>
     <h2 id="name"></h2>
@@ -282,8 +279,8 @@
             }
 
             const entries = data.entry
-                                .map(e => e.resource)
-                                .filter(r => r.resourceType !== "Composition");
+                .map(e => e.resource)
+                .filter(r => r.resourceType !== "Composition");
 
             const tabs = [
                 {
