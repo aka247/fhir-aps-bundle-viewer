@@ -4,9 +4,11 @@
 Examples: https://fhir.hl7.at/r4-ELGA-AustrianPatientSummary-main/index.html
 
 Based on FHIR Bundle Viewer (Michael van der Zel)
-A simple FHIR Bundle as a Table Viewer based on bootstrap.
+https://github.com/mvdzel/fhir-bundle-viewer
+
+"A simple FHIR Bundle as a Table Viewer based on bootstrap.
 This viewer is initially created to visualize a Synthea generated patient.
-And $everything exports.
+And $everything exports."
 
 
 ---------
