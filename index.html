@@ -132,13 +132,14 @@
             for: "Für",
             lastModified: "Zuletzt geändert",
             requester: "Anforderer",
-            owner: "Ersteller",
+            owner: "Verantwortlich",
             performerType: "Fachrichtung",
             //task: "Tasks",
             goal: "Zielvereinbarungen",
 
         };
 
+        
         function formatDate(d) {
             if (!d) return "";
             const date = new Date(d);
@@ -285,6 +286,24 @@
                 .map(e => e.resource)
                 .filter(r => r.resourceType !== "Composition");
 
+            
+            // APS-Generator soll nicht als Device sondern unter administrative Informationen angezeigt werden
+            // APS Generator als Device-Name suchen
+            const apsGeneratorDevices = entries.filter(r =>
+                r.resourceType === "Device" &&
+                r.deviceName?.some(n => n.name === "APS Generator")
+            );
+            // Entferne APS Generator aus "implantate"
+            const implantateDevices = entries.filter(r =>
+                ["Device", "DeviceUseStatement"].includes(r.resourceType) &&
+                !(r.deviceName?.some(n => n.name === "APS Generator"))
+            );
+            // Administrative Ressourcen + APS Generator
+            const administrativeResources = entries.filter(r =>
+                ["Patient", "Practitioner", "Organization", "CareTeam"].includes(r.resourceType)
+            ).concat(apsGeneratorDevices);
+
+
             const tabs = [
                 {
                     id: "medikation",
@@ -307,10 +326,15 @@
                     title: "Eingriffe und Therapien",
                     resources: entries.filter(r => r.resourceType === "Procedure")
                 },
-                {
+                /*{
                     id: "implantate",
                     title: "Implantate, medizinische Geräte und Heilbehelfe",
                     resources: entries.filter(r => ["Device", "DeviceUseStatement"].includes(r.resourceType))
+                }, */
+                {
+                    id: "implantate",
+                    title: "Implantate, medizinische Geräte und Heilbehelfe",
+                    resources: implantateDevices
                 },
                 {
                     id: "impfungen",
@@ -378,21 +402,29 @@
                     title: "Warnungen",
                     resources: entries.filter(r => r.resourceType === "Flag")
                 },
-                {
+                /*
                     id: "administrativ",
                     title: "Administrative Informationen",
                     resources: entries.filter(r =>
                         ["Patient", "Practitioner", "Organization", "CareTeam"].includes(r.resourceType))
-                },
+                },*/
+                {
+                    id: "administrativ",
+                    title: "Administrative Informationen",
+                    resources: administrativeResources
+                }
 
             ];
 
             // Gesamtübersicht vorbereiten
             const gesamtHTMLSections = tabs
-                .filter(tab => tab.resources.length > 0)
-                .map(tab =>
-                    `<h3>${tab.title}</h3>\n${renderGroupedTables(tab.resources)}<br/>`
-                ).join("\n");
+            .filter(tab => tab.resources.length > 0)
+            .map(tab => {
+                // Specimen ausfiltern
+                const filteredResources = tab.resources.filter(r => r.resourceType !== "Specimen");
+                if (filteredResources.length === 0) return "";
+                return `<h3>${tab.title}</h3>\n${renderGroupedTables(filteredResources)}<br/>`;
+            }).join("\n");
 
             if (gesamtHTMLSections) {
                 tabs.unshift({
