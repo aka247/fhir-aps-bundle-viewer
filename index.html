@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Austrian Patient Summary</title>
+    <!-- <h1>AUSTRIAN PATIENT SUMMARY</h1> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <style>
         body {
@@ -51,7 +51,7 @@
         </select>
     </div>
 
-    <h1>AUSTRIAN PATIENT SUMMARY</h1>
+    <!-- <h1>AUSTRIAN PATIENT SUMMARY</h1> -->
     <h2 id="name"></h2>
     <p id="gender-birthdate"></p>
 
@@ -87,8 +87,8 @@
             occurrenceDateTime: "Datum",
             onsetDateTime: "Beginn",
             abatementDateTime: "Ende",
-            clinicalStatus: "Status",
-            verificationStatus: "Status",
+            clinicalStatus: "Klinischer Status",
+            verificationStatus: "Status der Verifikation",
             manufacturer: "Hersteller",
             lotNumber: "Chargennummer",
             expirationDate: "Verfallsdatum",
@@ -134,6 +134,9 @@
             requester: "Anforderer",
             owner: "Ersteller",
             performerType: "Fachrichtung",
+            //task: "Tasks",
+            goal: "Zielvereinbarungen",
+
         };
 
         function formatDate(d) {
@@ -241,14 +244,14 @@
                 "MedicationDispense": "Medikationsabgabe",
                 "MedicationAdministration": "Medikationsverabreichung",
                 "AllergyIntolerance": "Allergien und Intoleranzen",
-                //"Condition": "Gesundheitsprobleme",
+                "Condition": "Gesundheitsprobleme",
                 "Procedure": "Eingriffe und Therapien",
                 "Device": "Gerät",
                 "DeviceUseStatement": "Gerätenutzung",
                 "Immunization": "Impfungen",
                 "DiagnosticReport": "Befunde",
                 //"Observation": "Diagnostische Resultate",
-                "CarePlan": "Behandlungsplan",
+                //"CarePlan": "Behandlungsplan",
                 "Consent": "Einwilligung",
                 "Flag": "Warnung",
                 "Patient": "Patient",
@@ -388,7 +391,7 @@
             const gesamtHTMLSections = tabs
                 .filter(tab => tab.resources.length > 0)
                 .map(tab =>
-                    `<h3>${tab.title}</h3>\n${renderGroupedTables(tab.resources)}`
+                    `<h3>${tab.title}</h3>\n${renderGroupedTables(tab.resources)}<br/>`
                 ).join("\n");
 
             if (gesamtHTMLSections) {
