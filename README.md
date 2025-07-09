@@ -1,7 +1,7 @@
 
 # APS Bundle Viewer
 
-Examples: https://fhir.hl7.at/r4-ELGA-AustrianPatientSummary-main/index.html
+https://aka247.github.io/fhir-aps-bundle-viewer/
 
 Based on FHIR Bundle Viewer (Michael van der Zel)
 https://github.com/mvdzel/fhir-bundle-viewer
@@ -10,6 +10,8 @@ https://github.com/mvdzel/fhir-bundle-viewer
 This viewer is initially created to visualize a Synthea generated patient.
 And $everything exports."
 
+
+Examples: https://fhir.hl7.at/r4-ELGA-AustrianPatientSummary-main/index.html
 
 ---------
 Serve via node.js "http-server" for getJSON to work.
