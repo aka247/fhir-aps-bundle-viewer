@@ -3,6 +3,8 @@
 
 https://aka247.github.io/fhir-aps-bundle-viewer/
 
+[![Screenshot](aps_viewer_screenshot.jpg){: style="width: 100%"}](aps_viewer_screenshot.jpg)
+
 Based on FHIR Bundle Viewer (Michael van der Zel)
 https://github.com/mvdzel/fhir-bundle-viewer
 
