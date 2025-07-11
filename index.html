@@ -152,7 +152,6 @@
         }
 
 
-
         function getValue(val, key = "") {
 
             if (!val) return "";
@@ -161,13 +160,18 @@
                 // Handle Observation.component[] separately
                 if (key === "component") {
                     return val.map(c => {
-                        const code = c.code?.coding?.[0]?.display || c.code?.text || c.code?.coding?.[0]?.code || "Komponente";
+                        //const code = c.code?.coding?.[0]?.display || c.code?.text || c.code?.coding?.[0]?.code || "Komponente";
+                        const code = c.code?.coding?.[0]?.display ||
+                             c.code?.text ||
+                             c.code?.coding?.[0]?.code ||
+                             "Komponente";
                         const value = getValue(c.valueQuantity) || getValue(c.valueCodeableConcept) || getValue(c.valueString) || "";
                         return `${code}: ${value}`;
                     }).join("<br>");
                 }
                 return val.map(v => getValue(v)).join(", ");
             }
+            
 
             if (typeof val === "object") {
                 if (val.hasOwnProperty("value") && val.hasOwnProperty("unit")) {

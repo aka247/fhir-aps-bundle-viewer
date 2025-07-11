@@ -1019,7 +1019,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        "SupplyDelivery",
 	        "SupplyRequest",
           "Task",
-	        "VisionPrescription"
+	        "VisionPrescription",
+          "PlanDefinition",
+          "ActivityDefinition",
+          "Questionnaire",
+          "DeviceRequest",
+          "CommunicationRequest",
+          "MedicationRequest",
+
 	    ];
 
 	    exports.$WithPatient = mw.$$Simple(function(args){
