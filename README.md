@@ -1,15 +1,14 @@
 
 # APS Bundle Viewer
 
+https://aka247.github.io/fhir-aps-bundle-viewer/
+
+[![Screenshot](aps_viewer_screenshot.jpg)](aps_viewer_screenshot.jpg)
+
+Based on FHIR Bundle Viewer (Michael van der Zel, https://github.com/mvdzel/fhir-bundle-viewer): "A simple FHIR Bundle as a Table Viewer based on bootstrap. This viewer is initially created to visualize a Synthea generated patient. And $everything exports."
+
+
 Examples: https://fhir.hl7.at/r4-ELGA-AustrianPatientSummary-main/index.html
-
-Based on FHIR Bundle Viewer (Michael van der Zel)
-https://github.com/mvdzel/fhir-bundle-viewer
-
-"A simple FHIR Bundle as a Table Viewer based on bootstrap.
-This viewer is initially created to visualize a Synthea generated patient.
-And $everything exports."
-
 
 ---------
 Serve via node.js "http-server" for getJSON to work.
