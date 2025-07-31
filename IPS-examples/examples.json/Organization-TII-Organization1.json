@@ -1,0 +1,14 @@
+{
+  "resourceType" : "Organization",
+  "id" : "TII-Organization1",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: Organization TII-Organization1</b></p><a name=\"TII-Organization1\"> </a><a name=\"hcTII-Organization1\"> </a><a name=\"TII-Organization1-en-US\"> </a><p><b>name</b>: Someplace General Hospital</p><p><b>address</b>: 123 Street Address Sometown Somecountry </p></div>"
+  },
+  "name" : "Someplace General Hospital",
+  "address" : [{
+    "line" : ["123 Street Address"],
+    "city" : "Sometown",
+    "country" : "Somecountry"
+  }]
+}

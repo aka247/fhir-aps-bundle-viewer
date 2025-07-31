@@ -1,0 +1,9 @@
+{
+  "resourceType" : "Organization",
+  "id" : "simple-org",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: Organization simple-org</b></p><a name=\"simple-org\"> </a><a name=\"hcsimple-org\"> </a><a name=\"simple-org-en-US\"> </a><p><b>name</b>: Best Diagnostic Department</p></div>"
+  },
+  "name" : "Best Diagnostic Department"
+}
