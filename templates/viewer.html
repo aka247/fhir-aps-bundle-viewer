@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>FHIR Bundle Viewer</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>FHIR Bundle Viewer</h2>
+    <div><strong>Datei:</strong> {{ filename }}</div>
+  </div>
+
+  {% if patient %}
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">Patient</h5>
+      <p class="card-text">
+        <strong>Name:</strong>
+        {% if patient.name %}
+          {{ patient.name[0].given[0] }} {{ patient.name[0].family }}
+        {% else %}
+          Nicht verfügbar
+        {% endif %}<br>
+        <strong>Geburtsdatum:</strong> {{ patient.birthDate or "Nicht verfügbar" }}<br>
+        <strong>Geschlecht:</strong> {{ patient.gender or "Nicht verfügbar" }}
+      </p>
+    </div>
+  </div>
+  {% endif %}
+
+  <ul class="nav nav-tabs" id="tabNav" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="gesamt-tab" data-bs-toggle="tab" data-bs-target="#gesamt" type="button" role="tab">Gesamtübersicht</button>
+    </li>
+    {% for name, _ in tabs %}
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="tab-{{ loop.index }}" data-bs-toggle="tab" data-bs-target="#tabcontent-{{ loop.index }}" type="button" role="tab">{{ name }}</button>
+    </li>
+    {% endfor %}
+  </ul>
+
+  <div class="tab-content mt-3">
+    <div class="tab-pane fade show active" id="gesamt" role="tabpanel">
+      <ul class="list-group">
+        {% for name, count in summary %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          {{ name }}
+          <span class="badge bg-primary rounded-pill">{{ count }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    {% for name, resources in tabs %}
+    <div class="tab-pane fade" id="tabcontent-{{ loop.index }}" role="tabpanel">
+      <h4>{{ name }}</h4>
+      {% for resource in resources %}
+      <pre class="bg-light p-2 border">{{ resource | tojson(indent=2) }}</pre>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
