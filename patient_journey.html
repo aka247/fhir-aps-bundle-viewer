@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Patientenreise – Anton Testpatient</title>
+<link href="https://unpkg.com/vis-timeline@7.7.0/styles/vis-timeline-graph2d.min.css" rel="stylesheet">
+<style>
+  body { font-family: Arial, sans-serif; margin: 20px; }
+  #visualization { border: 1px solid #ccc; }
+  .smiley { font-size: 24px; }
+</style>
+</head>
+<body>
+
+<h2>Patientenverlauf – Anton Testpatient</h2>
+<div id="visualization"></div>
+
+<script src="https://unpkg.com/vis-timeline@7.7.0/standalone/umd/vis-timeline-graph2d.min.js"></script>
+<script>
+// Rohdaten aus Patient Summary
+let items = [
+  // Arztkontakte
+  { content: "👩‍⚕️ Erstdiagnose Diabetes<br><small>Dr. Hanna Hausärztin</small>", start: "2025-03-22", type: "point" },
+  { content: "👁 Augenuntersuchung geplant", start: "2025-03-22", type: "point" },
+
+  // Labor
+  { content: "📊 Laboruntersuchung HbA1c", start: "2025-03-17", type: "point", style: "background-color: #fff3cd" },
+  { content: "📊 Laboruntersuchung HbA1c<br>(7.1%)", start: "2025-07-10", type: "point", style: "background-color: #fff3cd" },
+
+  // Schulungen
+  { content: "📚 Patientenschulung Ernährung", start: "2025-04-02", type: "point", style: "background-color: #cfe2ff" },
+
+  // Medikation
+  { content: "💊 Ramipril", start: "2025-03-14", end: "2025-12-31", type: "range", style: "background-color: lightblue" },
+  { content: "💊 Metformin", start: "2025-07-15", end: "2025-12-31", type: "range", style: "background-color: lightgreen" },
+
+  // Dokumente / Berichte
+  { content: "📄 Patientenverfügung hinterlegt", start: "2025-03-20", type: "point", style: "background-color: #e2e3e5" },
+
+  // Zustand
+  { content: "<span class='smiley'>🙂</span>", start: "2025-03-22", type: "point" },
+  { content: "<span class='smiley'>😊</span>", start: "2025-07-15", type: "point" }
+];
+
+// Items nach Datum sortieren
+items = items.sort((a, b) => new Date(a.start) - new Date(b.start))
+  .map((item, index) => ({ id: index + 1, ...item }));
+
+// Timeline Optionen
+const options = {
+  stack: true,
+  margin: { item: 20 },
+  orientation: 'top',
+  showCurrentTime: false,
+  start: "2025-03-14",
+  end: "2025-12-31",
+  zoomMin: 1000 * 60 * 60 * 24 * 7,
+  zoomMax: 1000 * 60 * 60 * 24 * 365 * 10
+};
+
+// Timeline erzeugen
+const container = document.getElementById('visualization');
+new vis.Timeline(container, new vis.DataSet(items), options);
+</script>
+
+</body>
+</html>
