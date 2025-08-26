@@ -1,0 +1,2612 @@
+{
+  "resourceType": "Bundle",
+  "id": "example-iv-5-poc-med-test",
+  "meta": {
+    "profile": [
+      "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-bundle"
+    ]
+  },
+  "identifier": {
+    "system": "http://system-to-be-defined.com",
+    "value": "63fef90a-be11-4ddf-aece-d77da15c4f13"
+  },
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:212fdc76-ccc3-40bf-8cdd-82f2ef88bd7b",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "example-iv-5-poc-med-test-composition",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-composition"
+          ]
+        },
+        "author": [
+          {
+            "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f474",
+            "display": "APS Generator"
+          }
+        ],
+        "extension": [
+          {
+            "url": "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-ext-composition-countryOfAffiliation",
+            "valueString": "AT"
+          }
+        ],
+        "section": [
+          {
+            "text": {
+              "status": "generated",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Ramipril 5 mg 1-0-0-0, Start 15.06.2016</p><p>Metformin 500 mg 1-0-1-0, Start 22.03.2025</p></div>"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:acac4c94-a752-4cf5-9a6b-0d84237d5088",
+                "display": "RAMIPRIL 1A TBL 5MG"
+              },
+              {
+                "reference": "urn:uuid:acac4c94-a752-4cf5-9a6b-0d84237d5099",
+                "display": "METFORMIN HEX FTBL 500MG"
+              }
+            ],
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "10160-0",
+                  "display": "Medikationsanamnese"
+                }
+              ]
+            },
+            "title": "Medikationsliste"
+          },
+          {
+            "text": {
+              "status": "generated",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Allergie gegen Benzylpenicillin-Natrium.</p></div>"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:768eb9cb-00f3-4ab1-bfc2-ff835cb3b89b",
+                "display": "Allergie gegen Benzylpenicillin-Natrium"
+              }
+            ],
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "48765-2",
+                  "display": "Allergien und unerwünschte Wirkungen"
+                }
+              ]
+            },
+            "title": "Allergien und Intoleranzen"
+          },
+          {
+            "text": {
+              "status": "generated",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Diabettes mellitus Typ 2</p><p>Arterielle Hypertonie</p><p>Adipositas</p><p>Familienanamnese: Vorzeitige koronare Herzerkrankung, Diabetes mellitus</p></div>"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:9d1c0b74-20c1-4603-a95a-71e6a1dc8fde",
+                "display": "Arterielle Hypertonie"
+              },
+              {
+                "reference": "urn:uuid:8d3a18fb-3610-4bfb-9aa4-1169cc6dd2dd",
+                "display": "Adipositas"
+              },
+              {
+                "reference": "urn:uuid:a3a9be59-ec61-4cab-92a9-9cbab6aec437",
+                "display": "Diabetes mellitus Typ 2"
+              },
+              {
+                "reference": "urn:uuid:e66d8ac1-a124-4e94-be22-969c9b117ce5",
+                "display": "Familienanamnese: Vorzeitige koronare Herzerkrankung"
+              },
+              {
+                "reference": "urn:uuid:e66d8ac1-a124-4e94-be22-969c9b117ce6",
+                "display": "Familienanamnese: Diabetes mellitus in der Familie"
+              }
+            ],
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "11450-4",
+                  "display": "Problemliste"
+                }
+              ]
+            },
+            "title": "Gesundheitsprobleme und Risiken"
+          },
+          {
+            "text": {
+              "status": "generated",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Totalersatz des linken Hüftgelenks</p></div>"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:75c46c35-8f4e-4232-b026-5672c60d076a",
+                "display": "Totalersatz des linken Hüftgelenks"
+              }
+            ],
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "47519-4",
+                  "display": "Anamnese der Prozeduren oder Maßnahmen"
+                }
+              ]
+            },
+            "title": "Eingriffe und Therapien"
+          },
+          {
+            "text": {
+              "status": "generated",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Hüftprothese</p></div>"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:490dab5c-271e-4736-8a6b-5f6f089d0a11",
+                "display": "Hüftprothese"
+              }
+            ],
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "46264-8",
+                  "display": "Anamnese zum Einsatz von Medizinprodukten"
+                }
+              ]
+            },
+            "title": "Implantate, medizinische Geräte und Heilbehelfe"
+          },
+          {
+            "text": {
+              "status": "generated",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Impfung gegen Diphtherie-Pertussis-Poliomyelitis-Tetanus</p></div>"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:590dab5c-271e-4736-8a6b-d04fd2a04607",
+                "display": "Diphtherie-Pertussis-Poliomyelitis-Tetanus"
+              }
+            ],
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "11369-6",
+                  "display": "Impfungen"
+                }
+              ]
+            },
+            "title": "Impfungen"
+          },
+          {
+            "text": {
+              "status": "generated",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Glucose im kapillaren Blut 1h postprandial</p><p>Hemoglobin A1c/Hemoglobin im Blut: 8.1 %</p><p>Kreatinin in Serum: 1.2 mg/dL</p></div>"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:725bcf71-22e6-473b-a879-49a4b63cd654",
+                "display": "Glucose im kapillaren Blut 1h postprandial"
+              },
+              {
+                "reference": "urn:uuid:aeff2319-2cc2-4fba-9541-7a4de3d20f91",
+                "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+              },
+              {
+                "reference": "urn:uuid:d16dce15-bc5a-48a5-910e-6ac039785a2a",
+                "display": "Kreatinin in Serum"
+              }
+            ],
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "30954-2",
+                  "display": "Relevante diagnostische Tests oder Labordaten"
+                }
+              ]
+            },
+            "title": "Diagnostische Resultate"
+          },
+          {
+            "text": {
+              "status": "generated",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Körpergröße: 173 cm</p><p>Körpergewicht: 90 kg</p><p>BMI: 30.07 (high)</p><p>Blutdruck 180 / 80</p><p>Herzfrequenz 100</p></div>"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:74c5e186-d765-4c93-a624-c9b0746e8142",
+                "display": "Körpergröße: 173 cm"
+              },
+              {
+                "reference": "urn:uuid:428259da-e0f7-4780-b1e3-c177515edd37",
+                "display": "Körpergewicht: 90 kg"
+              },
+              {
+                "reference": "urn:uuid:daf9c15d-14d4-429c-b658-6842fdff67d8",
+                "display": "BMI: 30.07"
+              },
+              {
+                "reference": "urn:uuid:8248cc70-65a2-4d37-ae14-a3ef2abf8f32",
+                "display": "Blutdruck 180 / 80"
+              },
+              {
+                "reference": "urn:uuid:4d3f7ac4-fd0a-49af-a56b-303a2dbe67d1",
+                "display": "Herzfrequenz 100"
+              }
+            ],
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8716-3",
+                  "display": "Vitalparameter"
+                }
+              ]
+            },
+            "title": "Vitalparameter"
+          },
+          {
+            "text": {
+              "status": "generated",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Masernerkrankung in der Kindheit.</p></div>"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:82301518-66ca-4b4c-821d-087adf643cc4",
+                "display": "Vergangene Masernerkrankung"
+              }
+            ],
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "11348-0",
+                  "display": "Vergangene Gesundheitsprobleme und Risiken"
+                }
+              ]
+            },
+            "title": "Vergangene Gesundheitsprobleme und Risiken"
+          },
+          {
+            "text": {
+              "status": "generated",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Behandlungsplan Diabetes: Patientenschulung und Ernährungsberatung, Augenuntersuchung, Laboruntersuchung, Zielvereinbarungen</p></div>"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:39cd75da-2456-46a9-a703-89d8b65ae333",
+                "display": "Behandlungsplan Diabetes"
+              }
+            ],
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "18776-5",
+                  "display": "Behandlungsplan - Notiz"
+                }
+              ]
+            },
+            "title": "Behandlungsplan"
+          },
+          {
+            "text": {
+              "status": "generated",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Ehemaliger Raucher, Person</p><p>Alkoholische Getränke pro Tag, 1-2 Gläser Wein/Bier</p><p>Körperliche Aktivität 2,5h/Wo</p></div>"
+            },
+            "entry": [
+              {
+                "reference": "urn:uuid:d0a5bbf1-6d01-4d44-bac5-05f12c98411e",
+                "display": "Ehemalig rauchende Person"
+              },
+              {
+                "reference": "urn:uuid:d0a5bbf1-6d01-4d44-bac5-05f12c984112",
+                "display": "Alkoholische Getränke pro Tag, 1-2 Gläser Wein/Bier"
+              },
+              {
+                "reference": "urn:uuid:9add5c32-1ded-43d6-b163-c3fe13f94984",
+                "display": "Körperliche Aktivität"
+              }
+            ],
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "29762-2",
+                  "display": "Sozialanamnese"
+                }
+              ]
+            },
+            "title": "Lebensstil, soziale Umstände und Verhalten"
+          }
+        ],
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "code": "60591-5",
+              "system": "http://loinc.org",
+              "display": "Patient Summary"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        },
+        "date": "2025-03-22T11:01:30+01:00",
+        "title": "Austrian Patient Summary",
+        "custodian": {
+          "reference": "urn:uuid:f6266e6a-f63d-4673-b2de-3dff11e619d6",
+          "display": "Zentrale Anwendung APS"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "001",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-patient"
+          ]
+        },
+        "identifier": [
+          {
+            "assigner": {
+              "display": "Dachverband der österreichischen Sozialversicherungsträger"
+            },
+            "system": "urn:oid:1.2.40.0.10.1.4.3.1",
+            "type": {
+              "coding": [
+                {
+                  "code": "SS",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "display": "Social Security number"
+                }
+              ]
+            },
+            "value": "1236121153"
+          },
+          {
+            "assigner": {
+              "display": "Ein GDA in Österreich"
+            },
+            "type": {
+              "coding": [
+                {
+                  "code": "PI",
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "display": "Patient internal identifier"
+                }
+              ]
+            },
+            "system": "urn:oid:1.2.3.4.5",
+            "value": "0002"
+          }
+        ],
+        "name": [
+          {
+            "given": [
+              "Anton"
+            ],
+            "family": "Testpatient"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "Rotenturmstraße 14"
+            ],
+            "use": "home",
+            "city": "Wien",
+            "postalCode": "1010",
+            "country": "AUT"
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1953-11-12",
+        "maritalStatus": {
+          "coding": [
+            {
+              "code": "M",
+              "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+              "display": "Married"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:75db30ee-7028-486c-929a-c5126837f474",
+      "resource": {
+        "resourceType": "Device",
+        "id": "example-iv-5-poc-med-test-author-device",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-device"
+          ]
+        },
+        "text": {
+          "status": "additional",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Dieses Gerät erzeugt ein APS FHIR-Dokument.</p></div>"
+        },
+        "deviceName": [
+          {
+            "name": "APS Generator",
+            "type": "user-friendly-name"
+          }
+        ],
+        "version": [
+          {
+            "value": "1.0"
+          }
+        ],
+        "patient": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        },
+        "type": {
+          "coding": [
+            {
+              "code": "49062001",
+              "system": "http://snomed.info/sct",
+              "display": "Gerät"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:75db30ee-7028-486c-929a-c5126837f472",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "example-iv-5-poc-med-test-practitioner-iv",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-practitioner"
+          ]
+        },
+        "identifier": [
+          {
+            "assigner": {
+              "display": "Bundesministerium für Gesundheit"
+            },
+            "system": "urn:ietf:rfc:3986",
+            "value": "urn:oid:1.2.40.0.10.99.1.2.3.4"
+          }
+        ],
+        "name": [
+          {
+            "prefix": [
+              "Dr."
+            ],
+            "given": [
+              "Melanie"
+            ],
+            "family": "IV Diätologin"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "Praterstern 5"
+            ],
+            "city": "Wien",
+            "postalCode": "1020"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "example-iv-5-poc-med-test-practitioner-1",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-practitioner"
+          ]
+        },
+        "identifier": [
+          {
+            "assigner": {
+              "display": "Bundesministerium für Gesundheit"
+            },
+            "system": "urn:ietf:rfc:3986",
+            "value": "urn:oid:1.2.40.0.10.99.1.2.3.4"
+          }
+        ],
+        "name": [
+          {
+            "prefix": [
+              "Dr."
+            ],
+            "given": [
+              "Hanna"
+            ],
+            "family": "Hausärztin"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "Treustraße 38"
+            ],
+            "city": "Wien",
+            "postalCode": "1200"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:75db30ee-7028-486c-929a-c5126837f477",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "example-iv-5-poc-med-test-careteam-fallkoordination",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-practitioner"
+          ]
+        },
+        "identifier": [
+          {
+            "assigner": {
+              "display": "Bundesministerium für Gesundheit"
+            },
+            "system": "urn:ietf:rfc:3986",
+            "value": "urn:oid:1.2.40.0.10.99.1.2.3.4"
+          }
+        ],
+        "name": [
+          {
+            "prefix": [
+              "DGKP"
+            ],
+            "given": [
+              "Roman"
+            ],
+            "family": "Nutrix"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "Karlsplatz 1"
+            ],
+            "city": "Wien",
+            "postalCode": "1010"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:75db30ee-5555-486c-929a-c5126837f473",
+      "resource": {
+        "resourceType": "CareTeam",
+        "id": "example-iv-5-poc-med-test-careplan-diabetes-careteam",
+        "participant": [
+          {
+            "role": [
+              {
+                "coding": [
+                  {
+                    "code": "133932002",
+                    "system": "http://snomed.info/sct",
+                    "display": "Medizinische Fallführung"
+                  }
+                ],
+                "text": "Medizinische Fallführung"
+              }
+            ],
+            "member": {
+              "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+              "display": "Dr. Hanna Hausärztin"
+            }
+          },
+          {
+            "role": [
+              {
+                "coding": [
+                  {
+                    "code": "133932002",
+                    "system": "http://snomed.info/sct",
+                    "display": "Fallkoordination"
+                  }
+                ],
+                "text": "Fallkoordination"
+              }
+            ],
+            "member": {
+              "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f477",
+              "display": "DGKP Roman Nutrix"
+            }
+          }
+        ],
+        "name": "Careteam von Dr. IV Ärztin",
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:f6266e6a-f63d-4673-b2de-3dff11e619d6",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "example-iv-5-poc-med-test-organization",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-organization"
+          ]
+        },
+        "address": [
+          {
+            "line": [
+              "Stubenring 1"
+            ],
+            "city": "Wien",
+            "postalCode": "1010"
+          }
+        ],
+        "name": "Zentrale Anwendung APS, BMSGPK"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:acac4c94-a752-4cf5-9a6b-0d84237d5088",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "example-iv-5-poc-med-test-medicationplan-1",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-medicationrequest"
+          ]
+        },
+        "reasonReference": [
+          {
+            "reference": "urn:uuid:a3a9be59-ec61-4cab-92a9-9cbab6aec437",
+            "display": "Diabetes mellitus Typ 2"
+          }
+        ],
+        "note": [
+          {
+            "text": "Kontrolltermin: 17.10.2025"
+          }
+        ],
+        "dosageInstruction": [
+          {
+            "additionalInstruction": [
+              {
+                "text": "Nach dem Essen einnehmen"
+              }
+            ],
+            "timing": {
+              "repeat": {
+                "boundsPeriod": {
+                  "start": "2025-07-15"
+                },
+                "when": [
+                  "MORN",
+                  "EVE"
+                ]
+              }
+            },
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 1,
+                  "code": "{TAB}",
+                  "system": "https://termgit.elga.gv.at/ValueSet/elga-medikationmengenart",
+                  "unit": "Tablet"
+                }
+              }
+            ],
+            "route": {
+              "coding": [
+                {
+                  "code": "26643006",
+                  "system": "http://snomed.info/sct",
+                  "display": "Orale Einnahme"
+                }
+              ]
+            }
+          }
+        ],
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "code": "2450888",
+              "system": "https://termgit.elga.gv.at/CodeSystem/asp-liste",
+              "display": "RAMIPRIL 1A TBL  5MG"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        },
+        "authoredOn": "2025-07-15T11:00:05+02:00",
+        "requester": {
+          "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+          "display": "Dr. Hausärztin"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:acac4c94-a752-4cf5-9a6b-0d84237d5099",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "example-iv-5-poc-med-test-medicationplan-2",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-medicationrequest"
+          ]
+        },
+        "dosageInstruction": [
+          {
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 2,
+                  "code": "{TAB}",
+                  "system": "https://termgit.elga.gv.at/ValueSet/elga-medikationmengenart",
+                  "unit": "Tablet"
+                }
+              }
+            ],
+            "text": "S:1-0-1-0",
+            "sequence": 2,
+            "route": {
+              "coding": [
+                {
+                  "code": "26643006",
+                  "system": "http://snomed.info/sct",
+                  "display": "Orale Einnahme"
+                }
+              ]
+            }
+          }
+        ],
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "code": "1294446",
+              "system": "https://termgit.elga.gv.at/CodeSystem/asp-liste",
+              "display": "METFORMIN HEX FTBL  500MG"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        },
+        "authoredOn": "2025-07-15T08:00:00+01:00",
+        "requester": {
+          "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+          "display": "Dr. Hausärztin"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:768eb9cb-00f3-4ab1-bfc2-ff835cb3b89b",
+      "resource": {
+        "resourceType": "AllergyIntolerance",
+        "id": "example-iv-5-poc-med-test-allergy-1",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-allergyintolerance"
+          ]
+        },
+        "clinicalStatus": {
+          "coding": [
+            {
+              "code": "active",
+              "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical",
+              "display": "Active"
+            }
+          ]
+        },
+        "criticality": "high",
+        "code": {
+          "coding": [
+            {
+              "code": "89055006",
+              "system": "http://snomed.info/sct",
+              "display": "Benzylpenicillin-Natrium"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        },
+        "asserter": {
+          "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+          "display": "Dr. Hausärztin"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:9d1c0b74-20c1-4603-a95a-71e6a1dc8fde",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "example-iv-5-poc-med-test-problem-1",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-condition"
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "problem-list-item",
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "display": "Problem List Item"
+              }
+            ]
+          }
+        ],
+        "clinicalStatus": {
+          "coding": [
+            {
+              "code": "active",
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "code": "confirmed",
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "code": "38341003",
+              "system": "http://snomed.info/sct",
+              "display": "Arterielle Hypertonie"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        },
+        "recordedDate": "2016-11-01T08:30:00+01:00",
+        "asserter": {
+          "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+          "display": "Dr. Hanna Hausärztin"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:8d3a18fb-3610-4bfb-9aa4-1169cc6dd2dd",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "example-iv-5-poc-med-test-problem-2",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-condition"
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "problem-list-item",
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "display": "Problem List Item"
+              }
+            ]
+          }
+        ],
+        "clinicalStatus": {
+          "coding": [
+            {
+              "code": "active",
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "code": "confirmed",
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "code": "443371000124107",
+              "system": "http://snomed.info/sct",
+              "display": "Adipositas"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        },
+        "recordedDate": "2016-11-01T08:30:00+01:00",
+        "asserter": {
+          "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+          "display": "Dr. Hanna Hausärztin"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:a3a9be59-ec61-4cab-92a9-9cbab6aec437",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "example-iv-5-poc-med-test-problem-3",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-condition"
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "problem-list-item",
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "display": "Problem List Item"
+              }
+            ]
+          }
+        ],
+        "clinicalStatus": {
+          "coding": [
+            {
+              "code": "active",
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "code": "confirmed",
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "code": "44054006",
+              "system": "http://snomed.info/sct",
+              "display": "Diabetes mellitus Typ 2"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        },
+        "recordedDate": "2025-03-22T08:00:00+01:00",
+        "asserter": {
+          "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+          "display": "Dr. Hanna Hausärztin"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:e66d8ac1-a124-4e94-be22-969c9b117ce5",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "example-iv-5-poc-med-test-problem-4",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-condition"
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "problem-list-item",
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "display": "Problem List Item"
+              }
+            ]
+          }
+        ],
+        "clinicalStatus": {
+          "coding": [
+            {
+              "code": "active",
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "code": "confirmed",
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "code": "134439009",
+              "system": "http://snomed.info/sct",
+              "display": "Familienanamnese: vorzeitige koronare Herzkrankheit"
+            }
+          ]
+        },
+        "recordedDate": "2022-02-08T08:30:00+01:00",
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        },
+        "asserter": {
+          "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+          "display": "Dr. Hanna Hausärztin"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:e66d8ac1-a124-4e94-be22-969c9b117ce6",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "example-iv-5-poc-med-test-problem-5",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-condition"
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "problem-list-item",
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "display": "Problem List Item"
+              }
+            ]
+          }
+        ],
+        "clinicalStatus": {
+          "coding": [
+            {
+              "code": "active",
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "code": "confirmed",
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "code": "160303001",
+              "system": "http://snomed.info/sct",
+              "display": "Familienanamnese: Diabetes mellitus in der Familie"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        },
+        "recordedDate": "2022-02-08T08:30:00+01:00",
+        "asserter": {
+          "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+          "display": "Dr. Hanna Hausärztin"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:75c46c35-8f4e-4232-b026-5672c60d076a",
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "example-iv-5-poc-med-test-procedure-history-1",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-procedure"
+          ]
+        },
+        "focalDevice": [
+          {
+            "manipulated": {
+              "reference": "urn:uuid:490dab5c-271e-4736-8a6b-5f6f089d0a22",
+              "display": "Hüftprothese"
+            }
+          }
+        ],
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "code": "770606008",
+              "system": "http://snomed.info/sct",
+              "display": "Totalersatz des linken Hüftgelenks"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        },
+        "performedDateTime": "2020-12-23T08:30:00+01:00"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:490dab5c-271e-4736-8a6b-5f6f089d0a11",
+      "resource": {
+        "resourceType": "DeviceUseStatement",
+        "id": "example-iv-5-poc-med-test-medical-deviceUse-Hueftprothese",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-deviceusestatement"
+          ]
+        },
+        "device": {
+          "reference": "urn:uuid:490dab5c-271e-4736-8a6b-5f6f089d0a22",
+          "display": "Implantat: Hüftprothese"
+        },
+        "timingPeriod": {
+          "start": "2020-12-23T08:30:00+01:00"
+        },
+        "bodySite": {
+          "coding": [
+            {
+              "code": "362905007",
+              "system": "http://snomed.info/sct",
+              "display": "Gesamtes linkes Hüftgelenk"
+            }
+          ]
+        },
+        "status": "active",
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:490dab5c-271e-4736-8a6b-5f6f089d0a22",
+      "resource": {
+        "resourceType": "Device",
+        "id": "example-iv-5-poc-med-test-medical-device-Hueftprothese",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-device"
+          ]
+        },
+        "deviceName": [
+          {
+            "name": "Hüftprothese",
+            "type": "other"
+          }
+        ],
+        "version": [
+          {
+            "value": "123456"
+          }
+        ],
+        "type": {
+          "coding": [
+            {
+              "code": "67270000",
+              "system": "http://snomed.info/sct",
+              "display": "Hüftprothese"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:590dab5c-271e-4736-8a6b-d04fd2a04607",
+      "resource": {
+        "resourceType": "Immunization",
+        "id": "example-iv-5-poc-med-test-Immunization-1",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-immunization"
+          ]
+        },
+        "vaccineCode": {
+          "coding": [
+            {
+              "code": "2457324",
+              "system": "https://termgit.elga.gv.at/ValueSet/eimpf-impfstoffe",
+              "display": "BOOSTRIX POLIO FSPR 0,5ML"
+            }
+          ]
+        },
+        "performer": [
+          {
+            "actor": {
+              "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+              "display": "Dr. Hanna Hausärztin"
+            }
+          }
+        ],
+        "protocolApplied": [
+          {
+            "targetDisease": [
+              {
+                "coding": [
+                  {
+                    "code": "397430003",
+                    "system": "https://termgit.elga.gv.at/ValueSet/eimpf-immunizationtarget",
+                    "display": "Diphtheria"
+                  }
+                ]
+              },
+              {
+                "coding": [
+                  {
+                    "code": "27836007",
+                    "system": "https://termgit.elga.gv.at/ValueSet/eimpf-immunizationtarget",
+                    "display": "Pertussis"
+                  }
+                ]
+              },
+              {
+                "coding": [
+                  {
+                    "code": "398102009",
+                    "system": "https://termgit.elga.gv.at/ValueSet/eimpf-immunizationtarget",
+                    "display": "Poliomyelitis"
+                  }
+                ]
+              },
+              {
+                "coding": [
+                  {
+                    "code": "76902006",
+                    "system": "https://termgit.elga.gv.at/ValueSet/eimpf-immunizationtarget",
+                    "display": "Tetanus"
+                  }
+                ]
+              }
+            ],
+            "series": "Standardimpfserie",
+            "doseNumberPositiveInt": 1
+          }
+        ],
+        "status": "completed",
+        "patient": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        },
+        "occurrenceDateTime": "2025-01-08T14:31:30+00:00",
+        "route": {
+          "coding": [
+            {
+              "code": "IM",
+              "system": "https://termgit.elga.gv.at/ValueSet/eimpf-medikationartanwendung",
+              "display": "Intramuskulär"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:725bcf71-22e6-473b-a879-49a4b63cd654",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "example-iv-5-poc-med-test-diagnostic-result-1",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-observationresultslaboratorypathology"
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "laboratory",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Laboratory"
+              }
+            ]
+          }
+        ],
+        "performer": [
+          {
+            "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+            "display": "Dr. Hanna Hausärztin"
+          }
+        ],
+        "specimen": {
+          "reference": "urn:uuid:e3567418-073e-4fd7-af4e-5fd7ee4785f7",
+          "display": "Blutprobe"
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "32016-8",
+              "system": "http://loinc.org",
+              "display": "Glucose im kapillaren Blut 1h postprandial"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        },
+        "effectiveDateTime": "2025-03-14T08:00:00+01:00",
+        "valueQuantity": {
+          "value": 250,
+          "code": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "mg/dL"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:aeff2319-2cc2-4fba-9541-7a4de3d20f91",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "example-iv-5-poc-med-test-diagnostic-result-2",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-observationresultslaboratorypathology"
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "laboratory",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Laboratory"
+              }
+            ]
+          }
+        ],
+        "performer": [
+          {
+            "reference": "urn:uuid:82f802a7-56a9-49b4-a675-95da08f0d7a6",
+            "display": "Amadeus Spital - Labor"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "4548-4",
+              "system": "http://loinc.org",
+              "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8"
+        },
+        "effectiveDateTime": "2025-03-17T09:30:00+01:00",
+        "valueQuantity": {
+          "value": 8.1,
+          "code": "%",
+          "system": "http://unitsofmeasure.org",
+          "unit": "%"
+        },
+        "specimen": {
+          "reference": "urn:uuid:e3567418-073e-4fd7-af4e-5fd7ee4785f7",
+          "display": "Blutprobe"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:d16dce15-bc5a-48a5-910e-6ac039785a2a",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "example-iv-5-poc-med-test-diagnostic-result-3",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-observationresultslaboratorypathology"
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "laboratory",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Laboratory"
+              }
+            ]
+          }
+        ],
+        "performer": [
+          {
+            "reference": "urn:uuid:82f802a7-56a9-49b4-a675-95da08f0d7a6",
+            "display": "Amadeus Spital - Labor"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "2160-0",
+              "system": "http://loinc.org",
+              "display": "Kreatinin in Serum"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8"
+        },
+        "effectiveDateTime": "2025-03-17T09:30:00+01:00",
+        "valueQuantity": {
+          "value": 1.2,
+          "code": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "mg/dL"
+        },
+        "specimen": {
+          "reference": "urn:uuid:e3567418-073e-4fd7-af4e-5fd7ee4785f7",
+          "display": "Blutprobe"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:aeff2319-2cc2-4fba-9541-7a4de3d20f92",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "example-iv-5-poc-med-test-diagnostic-result-4",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-observationresultslaboratorypathology"
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "laboratory",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Laboratory"
+              }
+            ]
+          }
+        ],
+        "performer": [
+          {
+            "reference": "urn:uuid:82f802a7-56a9-49b4-a675-95da08f0d7a6",
+            "display": "Amadeus Spital - Labor"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "4548-4",
+              "system": "http://loinc.org",
+              "display": "Hemoglobin A1c/Hemoglobin.total in Blood"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8"
+        },
+        "effectiveDateTime": "2025-07-10T08:00:00+01:00",
+        "valueQuantity": {
+          "value": 7.1,
+          "code": "%",
+          "system": "http://unitsofmeasure.org",
+          "unit": "%"
+        },
+        "specimen": {
+          "reference": "urn:uuid:e3567418-073e-4fd7-af4e-5fd7ee4785f7",
+          "display": "Blutprobe"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:725bcf71-22e6-473b-a879-49a4b63cd655",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "example-iv-5-poc-med-test-diagnostic-result-5",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-observationresultslaboratorypathology"
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "laboratory",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Laboratory"
+              }
+            ]
+          }
+        ],
+        "performer": [
+          {
+            "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+            "display": "Dr. Hanna Hausärztin"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "32016-8",
+              "system": "http://loinc.org",
+              "display": "Glucose im kapillaren Blut 1h postprandial"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        },
+        "effectiveDateTime": "2025-04-05T08:00:00+01:00",
+        "valueQuantity": {
+          "value": 200,
+          "code": "mg/dL",
+          "system": "http://unitsofmeasure.org",
+          "unit": "mg/dL"
+        },
+        "specimen": {
+          "reference": "urn:uuid:e3567418-073e-4fd7-af4e-5fd7ee4785f7",
+          "display": "Blutprobe"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:82f802a7-56a9-49b4-a675-95da08f0d7a6",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "example-iv-5-poc-med-test-diagnostic-result-performer-1",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-organization"
+          ]
+        },
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "+43.1.3453446.0"
+          },
+          {
+            "system": "fax",
+            "value": "+43.1.3453446.4674"
+          },
+          {
+            "system": "email",
+            "value": "info@amadeusspital.at"
+          },
+          {
+            "system": "url",
+            "value": "https://www.amadeusspital.at"
+          }
+        ],
+        "address": [
+          {
+            "line": [
+              "Währinger Gürtel 18-20"
+            ],
+            "city": "Wien",
+            "postalCode": "1090",
+            "country": "AUT"
+          }
+        ],
+        "name": "Amadeus Spital - Labor"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:e3567418-073e-4fd7-af4e-5fd7ee4785f7",
+      "resource": {
+        "resourceType": "Specimen",
+        "id": "example-iv-5-poc-med-test-diagnostic-specimen-1",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-specimen"
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        },
+        "status": "unavailable",
+        "type": {
+          "coding": [
+            {
+              "code": "119297000",
+              "system": "http://snomed.info/sct",
+              "display": "Blutprobe"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:74c5e186-d765-4c93-a624-c9b0746e8142",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "example-iv-5-poc-med-test-vital-sign-1",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-observationvitalsigns"
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "performer": [
+          {
+            "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+            "display": "Dr. Hanna Hausärztin"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "8302-2",
+              "system": "http://loinc.org",
+              "display": "Körpergröße"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        },
+        "effectiveDateTime": "2020-02-15T08:00:00+01:00",
+        "valueQuantity": {
+          "value": 173,
+          "code": "cm",
+          "system": "http://unitsofmeasure.org",
+          "unit": "cm"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:428259da-e0f7-4780-b1e3-c177515edd37",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "example-iv-5-poc-med-test-vital-sign-2",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-observationvitalsigns"
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "performer": [
+          {
+            "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+            "display": "Dr. Hanna Hausärztin"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "29463-7",
+              "system": "http://loinc.org",
+              "display": "Körpergewicht"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        },
+        "effectiveDateTime": "2020-02-15T08:00:00+01:00",
+        "valueQuantity": {
+          "value": 90,
+          "code": "kg",
+          "system": "http://unitsofmeasure.org",
+          "unit": "kg"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:daf9c15d-14d4-429c-b658-6842fdff67d8",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "example-iv-5-poc-med-test-vital-sign-3",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-observationvitalsigns"
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "performer": [
+          {
+            "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+            "display": "Dr. Hanna Hausärztin"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "39156-5",
+              "system": "http://loinc.org",
+              "display": "Body Mass Index (BMI) [Verhältnis]"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        },
+        "effectiveDateTime": "2020-02-15T08:00:00+01:00",
+        "valueQuantity": {
+          "value": 30.07,
+          "code": "kg/m2",
+          "system": "http://unitsofmeasure.org",
+          "unit": "kg/m2"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:8248cc70-65a2-4d37-ae14-a3ef2abf8f32",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "example-iv-5-poc-med-test-vital-sign-4",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-observationvitalsigns"
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "performer": [
+          {
+            "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+            "display": "Dr. Hanna Hausärztin"
+          }
+        ],
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "8480-6",
+                  "system": "http://loinc.org",
+                  "display": "Systolischer Blutdruck"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 180,
+              "code": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "unit": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "8462-4",
+                  "system": "http://loinc.org",
+                  "display": "Diastolischer Blutdruck"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 80,
+              "code": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "unit": "mm[Hg]"
+            }
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "85354-9",
+              "system": "http://loinc.org",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        },
+        "effectiveDateTime": "2025-03-14T08:00:00+01:00"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:4d3f7ac4-fd0a-49af-a56b-303a2dbe67d1",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "example-iv-5-poc-med-test-vital-sign-5",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-observationvitalsigns"
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "vital-signs",
+                "display": "Vital Signs"
+              }
+            ]
+          }
+        ],
+        "performer": [
+          {
+            "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+            "display": "Dr. Hanna Hausärztin"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "8867-4",
+              "system": "http://loinc.org",
+              "display": "Herzfrequenz"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        },
+        "effectiveDateTime": "2025-03-14T08:00:00+01:00",
+        "valueQuantity": {
+          "value": 100,
+          "code": "/min",
+          "system": "http://unitsofmeasure.org",
+          "unit": "/min"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:82301518-66ca-4b4c-821d-087adf643cc4",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "example-iv-5-poc-med-test-illness-history-1",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-condition"
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "problem-list-item",
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "display": "Problem List Item"
+              }
+            ]
+          }
+        ],
+        "clinicalStatus": {
+          "coding": [
+            {
+              "code": "resolved",
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "display": "Resolved"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "code": "confirmed",
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "code": "14189004",
+              "system": "http://snomed.info/sct",
+              "display": "Masern"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        },
+        "asserter": {
+          "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+          "display": "Dr. Hanna Hausärztin"
+        },
+        "recordedDate": "1960-01-02"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:39cd75da-2456-46a9-a703-89d8b65ae333",
+      "resource": {
+        "resourceType": "CarePlan",
+        "id": "example-iv-5-poc-med-test-careplan-diabetes-1",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-careplan"
+          ]
+        },
+        "text": {
+          "status": "additional",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Behandlungsplan Diabetes</p></div>"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "18776-5",
+                "system": "http://loinc.org",
+                "display": "Behandlungsplan Diabetes"
+              }
+            ],
+            "text": "Behandlungsplan Diabetes"
+          }
+        ],
+        "careTeam": [
+          {
+            "reference": "urn:uuid:75db30ee-5555-486c-929a-c5126837f473",
+            "display": "Careteam von Dr. IV Ärztin"
+          }
+        ],
+        "goal": [
+          {
+            "reference": "urn:uuid:39cd75da-4444-46a9-a703-89d8b65ae777",
+            "display": "Ziel Hba1c"
+          },
+          {
+            "reference": "urn:uuid:39cd75da-9999-46a9-a703-89d8b65ae333",
+            "display": "Ziel Bewegung"
+          }
+        ],
+        "addresses": [
+          {
+            "reference": "urn:uuid:a3a9be59-ec61-4cab-92a9-9cbab6aec437",
+            "display": "Diabetes mellitus Typ 2"
+          }
+        ],
+        "activity": [
+          {
+            "reference": {
+              "reference": "urn:uuid:39cd75da-1111-46a9-a703-89d8b65ae111",
+              "display": "Task Augenuntersuchung"
+            }
+          },
+          {
+            "reference": {
+              "reference": "urn:uuid:39cd75da-2456-46a9-a703-89d8b65ae62c",
+              "display": "Task Patientenschulung und Ernährungsberatung"
+            }
+          },
+          {
+            "reference": {
+              "reference": "urn:uuid:39cd75da-2456-46a9-a703-89d8b65ae699",
+              "display": "Angeforderte Laboruntersuchung"
+            }
+          },
+          {
+            "reference": {
+              "reference": "urn:uuid:39cd75da-2456-46a9-a703-89d8b65a1234",
+              "display": "Abgeschlossene Laboruntersuchung"
+            }
+          }
+        ],
+        "status": "active",
+        "intent": "plan",
+        "title": "Behandlungsplan Diabetes",
+        "description": "Dokumentiert ausstehende Untersuchungen, Schulungen, klinische Ziele für die laufende Betreuung des Patienten.",
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        },
+        "created": "2025-03-22T08:00:00+01:00",
+        "author": {
+          "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+          "display": "Dr. Hanna Hausärztin"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:39cd75da-1111-46a9-a703-89d8b65ae111",
+      "resource": {
+        "resourceType": "Task",
+        "id": "example-iv-5-poc-med-test-careplan-task-eye-exam",
+        "text": {
+          "status": "additional",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Offene augenärztliche Kontrolle auf diabetische Retinopathie</p></div>"
+        },
+        "code": {
+          "coding": [
+            {
+              "code": "722161008",
+              "system": "http://snomed.info/sct",
+              "display": "Augenärztliche Kontrolle auf diabetische Retinopathie"
+            }
+          ]
+        },
+        "performerType": [
+          {
+            "coding": [
+              {
+                "code": "422234006",
+                "system": "http://snomed.info/sct",
+                "display": "Ophthalmologe"
+              }
+            ]
+          }
+        ],
+        "restriction": {
+          "recipient": [
+            {
+              "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+              "display": "Anton Testpatient"
+            }
+          ]
+        },
+        "status": "requested",
+        "intent": "plan",
+        "priority": "routine",
+        "authoredOn": "2025-03-22T08:00:00+01:00",
+        "requester": {
+          "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+          "display": "Dr. Hanna Hausärztin"
+        },
+        "owner": {
+          "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+          "display": "Dr. Hanna Hausärztin"
+        },
+        "reasonReference": {
+          "reference": "urn:uuid:a3a9be59-ec61-4cab-92a9-9cbab6aec437",
+          "display": "Diabetes mellitus Typ 2"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:39cd75da-2456-46a9-a703-89d8b65ae62c",
+      "resource": {
+        "resourceType": "Task",
+        "id": "example-iv-5-poc-med-test-careplan-task-nutrition-training",
+        "text": {
+          "status": "additional",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Abgeschlossene Patientenschulung und Ernährungsberatung bei Diabetes mellitus Typ II</p></div>"
+        },
+        "code": {
+          "coding": [
+            {
+              "code": "428274007",
+              "system": "http://snomed.info/sct",
+              "display": "Patientenschulung und Ernährungsberatung bei Diabetes mellitus Typ II"
+            }
+          ]
+        },
+        "performerType": [
+          {
+            "coding": [
+              {
+                "code": "768827000",
+                "system": "http://snomed.info/sct",
+                "display": "Nutritionist"
+              }
+            ],
+            "text": "Dr. IV Diätologin"
+          }
+        ],
+        "restriction": {
+          "recipient": [
+            {
+              "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+              "display": "Anton Testpatient"
+            }
+          ]
+        },
+        "status": "completed",
+        "intent": "plan",
+        "priority": "routine",
+        "authoredOn": "2025-03-22T08:00:00+01:00",
+        "lastModified": "2025-04-02T08:30:00+01:00",
+        "requester": {
+          "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+          "display": "Dr. Hanna Hausärztin"
+        },
+        "owner": {
+          "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f472",
+          "display": "Dr. IV Diätologin"
+        },
+        "reasonReference": {
+          "reference": "urn:uuid:a3a9be59-ec61-4cab-92a9-9cbab6aec437",
+          "display": "Diabetes mellitus Typ 2"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:39cd75da-2456-46a9-a703-89d8b65a1234",
+      "resource": {
+        "resourceType": "Task",
+        "id": "example-iv-5-poc-med-test-careplan-task-labor-1",
+        "text": {
+          "status": "additional",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Offene Laboruntersuchung</p></div>"
+        },
+        "code": {
+          "coding": [
+            {
+              "code": "15220000",
+              "system": "http://snomed.info/sct",
+              "display": "Laboruntersuchung"
+            }
+          ],
+          "text": "Laboruntersuchung"
+        },
+        "performerType": [
+          {
+            "coding": [
+              {
+                "code": "61246008",
+                "system": "http://snomed.info/sct",
+                "display": "Laborfacharzt"
+              }
+            ]
+          }
+        ],
+        "restriction": {
+          "recipient": [
+            {
+              "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+              "display": "Anton Testpatient"
+            }
+          ]
+        },
+        "status": "completed",
+        "intent": "order",
+        "priority": "urgent",
+        "authoredOn": "2025-03-14T08:00:00+01:00",
+        "lastModified": "2025-03-17T08:30:00+01:00",
+        "requester": {
+          "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+          "display": "Dr. Hanna Hausärztin"
+        },
+        "owner": {
+          "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+          "display": "Dr. Hanna Hausärztin"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:39cd75da-2456-46a9-a703-89d8b65ae699",
+      "resource": {
+        "resourceType": "Task",
+        "id": "example-iv-5-poc-med-test-careplan-task-labor-2",
+        "text": {
+          "status": "additional",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Abgeschlossene Laboruntersuchung</p></div>"
+        },
+        "code": {
+          "coding": [
+            {
+              "code": "15220000",
+              "system": "http://snomed.info/sct",
+              "display": "Laboruntersuchung"
+            }
+          ],
+          "text": "Laboruntersuchung"
+        },
+        "performerType": [
+          {
+            "coding": [
+              {
+                "code": "61246008",
+                "system": "http://snomed.info/sct",
+                "display": "Laborfacharzt"
+              }
+            ]
+          }
+        ],
+        "restriction": {
+          "recipient": [
+            {
+              "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+              "display": "Anton Testpatient"
+            }
+          ]
+        },
+        "status": "completed",
+        "intent": "order",
+        "priority": "routine",
+        "authoredOn": "2025-03-22T08:00:00+01:00",
+        "lastModified": "2025-07-15T08:00:00+01:00",
+        "requester": {
+          "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+          "display": "Dr. Hanna Hausärztin"
+        },
+        "owner": {
+          "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+          "display": "Dr. Hanna Hausärztin"
+        },
+        "reasonReference": {
+          "reference": "urn:uuid:a3a9be59-ec61-4cab-92a9-9cbab6aec437",
+          "display": "Diabetes mellitus Typ 2"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:39cd75da-4444-46a9-a703-89d8b65ae777",
+      "resource": {
+        "resourceType": "Goal",
+        "id": "example-iv-5-poc-med-test-careplan-diabetes-hba1c-zielwert",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "dietary",
+                "system": "http://terminology.hl7.org/CodeSystem/goal-category",
+                "display": "Dietary"
+              }
+            ],
+            "text": "Diät"
+          }
+        ],
+        "description": {
+          "text": "Hämoglobin A1c stabilisieren"
+        },
+        "target": [
+          {
+            "measure": {
+              "coding": [
+                {
+                  "code": "4548-4",
+                  "system": "http://loinc.org",
+                  "display": "Hämoglobin A1c total im Blut"
+                }
+              ],
+              "text": "Hämoglobin A1c total im Blut"
+            },
+            "detailQuantity": {
+              "comparator": "<",
+              "value": 6,
+              "code": "%",
+              "system": "http://unitsofmeasure.org",
+              "unit": "%"
+            }
+          }
+        ],
+        "addresses": [
+          {
+            "reference": "urn:uuid:a3a9be59-ec61-4cab-92a9-9cbab6aec437",
+            "display": "Diabetes mellitus Typ 2"
+          }
+        ],
+        "lifecycleStatus": "proposed",
+        "priority": {
+          "coding": [
+            {
+              "code": "high-priority",
+              "system": "http://terminology.hl7.org/CodeSystem/goal-priority",
+              "display": "hoch"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        },
+        "startDate": "2025-03-22",
+        "expressedBy": {
+          "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+          "display": "Dr. Hanna Hausärztin"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:39cd75da-9999-46a9-a703-89d8b65ae333",
+      "resource": {
+        "resourceType": "Goal",
+        "id": "example-iv-5-poc-med-test-careplan-diabetes-exercise",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "behavioral",
+                "system": "http://terminology.hl7.org/CodeSystem/goal-category",
+                "display": "Behavioral"
+              }
+            ],
+            "text": "Verhalten"
+          }
+        ],
+        "priority": {
+          "coding": [
+            {
+              "code": "high-priority",
+              "system": "http://terminology.hl7.org/CodeSystem/goal-priority",
+              "display": "High Priority"
+            }
+          ],
+          "text": "Hoch"
+        },
+        "description": {
+          "text": "Mindestens 30 Minuten pro Tag Sport treiben"
+        },
+        "target": [
+          {
+            "measure": {
+              "coding": [
+                {
+                  "code": "226029000",
+                  "system": "http://snomed.info/sct",
+                  "display": "Bewegung"
+                }
+              ],
+              "text": "Bewegung"
+            }
+          }
+        ],
+        "addresses": [
+          {
+            "reference": "urn:uuid:a3a9be59-ec61-4cab-92a9-9cbab6aec437",
+            "display": "Diabetes mellitus Typ 2"
+          }
+        ],
+        "lifecycleStatus": "proposed",
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        },
+        "startDate": "2025-03-22",
+        "expressedBy": {
+          "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+          "display": "Dr. Hanna Hausärztin"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:d0a5bbf1-6d01-4d44-bac5-05f12c98411e",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "example-iv-5-poc-med-test-social-history-1",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-observationtobaccouse"
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "social-history",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Social History"
+              }
+            ],
+            "text": "Lebensstil"
+          }
+        ],
+        "performer": [
+          {
+            "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+            "display": "Dr. Hanna Hausärztin"
+          }
+        ],
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "72166-2",
+              "system": "http://loinc.org",
+              "display": "Raucherstatus"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        },
+        "effectiveDateTime": "2025-03-14T08:00:00+01:00",
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "code": "8517006",
+              "system": "http://snomed.info/sct",
+              "display": "Ehemalig rauchende Person"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:d0a5bbf1-6d01-4d44-bac5-05f12c984112",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "example-iv-5-poc-med-test-social-history-2",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-observationalcoholuse"
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "social-history",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Social History"
+              }
+            ],
+            "text": "Lebensstil"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "74013-4",
+              "system": "http://loinc.org",
+              "display": "Alkoholische Getränke pro Tag, 1-2 Gläser Wein/Bier"
+            }
+          ]
+        },
+        "performer": [
+          {
+            "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+            "display": "Dr. Hanna Hausärztin"
+          }
+        ],
+        "status": "final",
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        },
+        "effectiveDateTime": "2025-03-14T08:00:00+01:00",
+        "valueQuantity": {
+          "value": 2,
+          "code": "/d",
+          "system": "http://unitsofmeasure.org",
+          "unit": "Gläser Wein pro Tag"
+        }
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:9add5c32-1ded-43d6-b163-c3fe13f94984",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "example-iv-5-poc-med-test-social-history-3",
+        "meta": {
+          "profile": [
+            "https://fhir.hl7.at/elga/aps/r4/StructureDefinition/at-aps-observation"
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "social-history",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "display": "Social History"
+              }
+            ],
+            "text": "Lebensstil"
+          }
+        ],
+        "performer": [
+          {
+            "reference": "urn:uuid:75db30ee-7028-486c-929a-c5126837f473",
+            "display": "Dr. Hanna Hausärztin"
+          }
+        ],
+        "valueRatio": {
+          "numerator": {
+            "value": 2.5,
+            "code": "h",
+            "system": "http://unitsofmeasure.org",
+            "unit": "Stunden",
+            "comparator": ">"
+          },
+          "denominator": {
+            "value": 1,
+            "code": "wk",
+            "system": "http://unitsofmeasure.org",
+            "unit": "Woche"
+          }
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "61686008",
+              "system": "http://snomed.info/sct",
+              "display": "Körperliche Aktivität"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "urn:uuid:0fed5ebe-ca8f-4ad1-aba4-ddad45bd6cc8",
+          "display": "Anton Testpatient"
+        },
+        "effectiveDateTime": "2025-03-14T08:00:00+01:00"
+      }
+    }
+  ],
+  "type": "document",
+  "timestamp": "2025-03-22T11:01:30+01:00"
+}
